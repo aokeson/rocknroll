@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/tomorrow.min.css">
+  <style>
+  .container ul li {
+      list-style-type: circle;
+      padding-left: 10px;
+      margin-left: 30px;
+  }
+  h2 {
+    border-bottom: solid #ccc 1px;
+  }
+  h3 {
+    font-style: italic;
+  }
+  code {
+    border: 1px #ddd solid;
+  }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo right">UCCD II - 2016</a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="/">Home</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container flow-text">
+  <h1 id="team-learning">Team Learning</h1>
+<h2 id="objective">Objective</h2>
+<p>Develop a functional prototype of the app your team designed during the Hackathon</p>
+<h2 id="due">Due</h2>
+<p>Friday @ 11:59pm, 2/12/2016</p>
+<h2 id="requirements">Requirements</h2>
+<h3 id="app">App</h3>
+<ul>
+<li>[ ] The client page (<a href="/apps/uber/client/">/apps/uber/client/</a>) should look as close to the mockup as possible.<ul>
+<li>[ ] The <a href="/apps/uber/client/components/map.jsx"><em>MapView</em></a> component should be implemented.</li>
+<li>[ ] The <a href="/apps/uber/client/components/navbar.jsx"><em>NavBar</em></a> component should be implemented.</li>
+<li>[ ] The <a href="/apps/uber/client/components/user.jsx"><em>User</em></a> component should be implemented.  </li>
+</ul>
+</li>
+<li>[ ] The admin page (<a href="/apps/uber/admin/">/apps/uber/admin/</a>) should look as close to the mockup as possible.<ul>
+<li>[ ] The <a href="/apps/uber/admin/components/provider-map.jsx"><em>ProviderMap</em></a> component should be implemented.</li>
+<li>[ ] The <a href="/apps/uber/admin/components/provider-list.jsx"><em>ProviderList</em></a> component should be implemented.  </li>
+<li>[ ] The <a href="/apps/uber/admin/components/user-map.jsx"><em>UserMap</em></a> component should be implemented.      </li>
+<li>[ ] The <a href="/apps/uber/admin/components/user-list.jsx"><em>UserList</em></a> component should be implemented.</li>
+</ul>
+</li>
+</ul>
+<h3 id="worker">Worker</h3>
+<ul>
+<li>[ ] The script for simulating providers should be implemented (i.e.,
+<code>workers/uber/simulate-providers.js</code>). Each provider should move around, rather
+than staying at the same location.</li>
+<li>[ ] The worker should be deployed to Heroku.</li>
+</ul>
+<h2 id="heroku-hints">Heroku Hints</h2>
+<h3 id="initial-push">Initial Push</h3>
+<p>Here’s a brief walkthrough of how you can push a script to Heroku to run as
+a background worker. This week and next week, you will be practicing pushing
+and running worker scripts on Heroku.</p>
+<p>Our goal here to push the code under <code>workers/uber</code> as an app to Heroku.</p>
+<p>Assume you are at the root of your book repo.</p>
+<p>Install NPM dependencies</p>
+<pre><code>$ npm install
+</code></pre><p>To execute the worker locally, run</p>
+<pre><code>$ node workers/uber/simulate-providers.js
+</code></pre><p>You should see</p>
+<p><img src="local_stdout.png" alt="local_stdout"></p>
+<p>To deploy the worker script to Heroku, first, create a Heroku app. The easiest
+would be to do it through Heroku’s online GUI. Remember the name you chose for
+your app, because you will need it for setting a heroku git remote.
+Here, the example Heroku app’s name is <code>ucdd2-workers-uber</code>.</p>
+<p>Next, create a heroku git remote to refer to this app. Here, we choose
+<code>heroku-uber</code> as the name of this remote. You will need to install
+<a href="https://toolbelt.heroku.com/">heroku toolbelt</a>.</p>
+<pre><code>$ heroku git:remote -r heroku-uber -a ucdd2-workers-uber    
+</code></pre><p>Finally, push the code, NOT all the code, only the code inside
+<code>workers/uber</code> to Heroku. To do so, commit the changes to the worker script</p>
+<pre><code>$ git commit -a -m &#39;some commit message&#39;
+</code></pre><p>Then use git’s subtree command.</p>
+<pre><code>$ git subtree push --prefix workers/uber heroku-uber master
+</code></pre><p>Run one worker (no web server)</p>
+<pre><code>$ heroku ps:scale web=0 worker=1
+</code></pre><p>To check if your worker is running correctly, read the logs</p>
+<pre><code>$ heroku logs
+</code></pre><p>You should see something like:</p>
+<p><img src="heroku_logs.png" alt="heroku_logs"></p>
+<p>This should look similar to the output of running locally.</p>
+<h3 id="subsequent-pushes">Subsequent Pushes</h3>
+<p>Each time you made changes to the script (i.e., <code>workers/uber/simulate-providers.js</code>).
+You can commit the changes</p>
+<pre><code>$ git commit -a -m &#39;another commit message&#39;
+</code></pre><p>Then run the subtree command to deploy to Heroku again</p>
+<pre><code>$ git subtree push --prefix workers/uber heroku-uber master
+</code></pre>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
