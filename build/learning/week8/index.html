@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/tomorrow.min.css">
+  <style>
+  .container ul li {
+      list-style-type: circle;
+      padding-left: 10px;
+      margin-left: 30px;
+  }
+  h2 {
+    border-bottom: solid #ccc 1px;
+  }
+  h3 {
+    font-style: italic;
+  }
+  code {
+    border: 1px #ddd solid;
+  }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo right">UCCD II - 2016</a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="/">Home</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container flow-text">
+  <h2 id="objectives">Objectives</h2>
+<ul>
+<li>High-fidelity prototype of your team’s together app</li>
+<li>Real-time, concurrent user simulator</li>
+<li>Test-driven development</li>
+<li>Behavior-driven development</li>
+</ul>
+<h2 id="due">Due</h2>
+<ul>
+<li>Team<ul>
+<li><strong>Milestone (1)</strong>: Wednesday @ 11:59pm, 3/2/2016 <span class="chip red">NEW</span></li>
+<li><strong>Milestone (2)</strong>: Friday @ 11:59pm, 3/4/2016</li>
+<li><strong>Milestone (3)</strong>: Monday @ 3pm, 3/7/2016</li>
+</ul>
+</li>
+</ul>
+<h2 id="actions-state-transformation-specification">Actions / State Transformation Specification</h2>
+<p>Given the BBD description you came up with during the hackathon,
+identify the key actions. Then, for each action, specify how the action would
+transform the real-time state of your app. Use the template at
+<a href="/apps/together/proposal/spec.html"><code>/apps/together/proposal/spec.md</code></a>. This
+specification will involve writing pseudo code.</p>
+<h2 id="user-simulator">User Simulator</h2>
+<p>Build a worker script to simulate a large number of concurrent users performing
+the various actions supported by your together app. Each action will trigger
+operations to transform the data stored in Firebase. The worker script from the
+previous Uber app can be a good skeleton code to build upon.</p>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li><strong>Milestone (1)</strong><ul>
+<li>[ ] Design the Firebase database structure</li>
+<li>[ ] Write the actions / state transformation specification  </li>
+</ul>
+</li>
+<li><strong>Milestone (2)</strong>  <ul>
+<li>[ ] Develop the basic functions of the user simulator<ul>
+<li>[ ] Simulate user login / logout</li>
+<li>[ ] Simulate multiple users    </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Milestone (3)</strong>  <ul>
+<li>[ ] Complete the user simulator<ul>
+<li>[ ] Simulate all the major actions specific to your application</li>
+</ul>
+</li>
+<li>[ ] Develop a high-fidelity prototype mockup of the main screen using mock data (this mockup
+is not connected with the database).</li>
+</ul>
+</li>
+</ul>
+<h2 id="submission">Submission</h2>
+<ul>
+<li>The Firebase database structure and action/state transform specification should be written in <a href="/apps/together/proposal/spec.html"><code>/apps/together/proposal/spec.md</code></a></li>
+<li>The index page of your team’s mockup should be at <a href="/apps/together/mockup-team/index.html"><code>/apps/together/mockup-team/index.html</code></a></li>
+<li>The repo link to the user simulator, posted to <a href="https://ucdd2016.slack.com/messages/demo/">#demo</a>. The grader
+will look at the code.</li>
+</ul>
+
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

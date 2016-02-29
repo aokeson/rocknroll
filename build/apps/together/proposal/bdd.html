@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/tomorrow.min.css">
+  <style>
+  .container ul li {
+      list-style-type: circle;
+      padding-left: 10px;
+      margin-left: 30px;
+  }
+  h2 {
+    border-bottom: solid #ccc 1px;
+  }
+  h3 {
+    font-style: italic;
+  }
+  code {
+    border: 1px #ddd solid;
+  }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo right">UCCD II - 2016</a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="/">Home</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container flow-text">
+  <h1 id="features">Features</h1>
+<h2 id="feature-my-app-s-feature-1">Feature: My App’s Feature 1</h2>
+<pre><code class="gherkin">TODO:
+</code></pre>
+<h2 id="feature-my-app-s-feature-2">Feature: My App’s Feature 2</h2>
+<pre><code class="gherkin">TODO:
+</code></pre>
+<h2 id="feature-my-app-s-feature-3">Feature: My App’s Feature 3</h2>
+<pre><code class="gherkin">TODO:
+</code></pre>
+<h2 id="feature-my-app-s-feature-4">Feature: My App’s Feature 4</h2>
+<pre><code class="gherkin">TODO:
+</code></pre>
+<h1 id="examples">Examples</h1>
+<h2 id="feature-usage">Feature: Usage</h2>
+<pre><code class="gherkin">Feature: Usage
+  As a user of Cucumber.js
+  I want to have documentation on Cucumber
+  So that I can concentrate on building awesome applications
+
+  Scenario: Reading documentation
+    Given I am on the Cucumber.js GitHub repository
+    When I go to the README file
+    Then I should see &quot;Usage&quot; as the page title
+</code></pre>
+<h2 id="feature-serve-coffee">Feature: Serve Coffee</h2>
+<pre><code class="gherkin">Feature: Serve coffee
+  Coffee should not be served until paid for
+  Coffee should not be served until the button has been pressed
+  If there is no coffee left then money should be refunded
+
+  Scenario: Buy last coffee
+    Given there are 1 coffees left in the machine
+    And I have deposited 1$
+    When I press the coffee button
+    Then I should be served a coffee
+
+  Scenario: No more coffees
+    Given there is no coffee left in the machine
+    And I have deposited $1
+    When I press the coffee button
+    Then I should be refunded $1
+</code></pre>
+
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

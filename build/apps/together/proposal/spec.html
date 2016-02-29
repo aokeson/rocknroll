@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/tomorrow.min.css">
+  <style>
+  .container ul li {
+      list-style-type: circle;
+      padding-left: 10px;
+      margin-left: 30px;
+  }
+  h2 {
+    border-bottom: solid #ccc 1px;
+  }
+  h3 {
+    font-style: italic;
+  }
+  code {
+    border: 1px #ddd solid;
+  }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo right">UCCD II - 2016</a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="/">Home</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container flow-text">
+  <h1 id="specification">Specification</h1>
+<h1 id="data">Data</h1>
+<p>Our app uses the following structure for the database backend:</p>
+<ul>
+<li>foo<ul>
+<li>bar<ul>
+<li>ss</li>
+<li>xx</li>
+</ul>
+</li>
+<li>messages</li>
+</ul>
+</li>
+</ul>
+<h1 id="actions">Actions</h1>
+<p>The major actions of our app are:</p>
+<ul>
+<li>(TODO: action name)</li>
+<li>(TODO: action name)</li>
+<li>(TODO: action name)</li>
+<li>(TODO: action name)</li>
+<li>(TODO: action name)</li>
+</ul>
+<h2 id="action-todo-name-">Action: (TODO: name)</h2>
+<p>(TODO: cases)</p>
+<h2 id="action-todo-name-">Action: (TODO: name)</h2>
+<p>(TODO: cases)</p>
+<h2 id="action-todo-name-">Action: (TODO: name)</h2>
+<p>(TODO: cases)</p>
+<h2 id="action-todo-name-">Action: (TODO: name)</h2>
+<p>(TODO: cases)</p>
+<p>(remove the example below before submission)</p>
+<h2 id="action-post-a-message-example-">Action: Post A Message (Example)</h2>
+<h3 id="case-post-a-message-d-">case: post a message ‘d’</h3>
+<pre><code class="javascript">// given
+foo.bar.messages is
+{
+  &#39;-cadsace&#39;: &#39;a&#39;,
+  &#39;-cadsacf&#39;: &#39;b&#39;,
+  &#39;-cadsacg&#39;: &#39;c&#39;
+}
+
+// when
+post_a_message(text = &#39;d&#39;)
+
+// then
+foo.bar.messages should be
+{
+  &#39;-cadsace&#39;: &#39;a&#39;,
+  &#39;-cadsacf&#39;: &#39;b&#39;,
+  &#39;-cadsacg&#39;: &#39;c&#39;,
+  &#39;-cadsach&#39;: &#39;d&#39;,
+}
+</code></pre>
+<h3 id="case-delete-a-message">case: delete a message</h3>
+<pre><code class="javascript">// given
+foo.bar.messages is
+{
+  &#39;-cadsace&#39;: &#39;a&#39;,
+  &#39;-cadsacf&#39;: &#39;b&#39;,
+  &#39;-cadsacg&#39;: &#39;c&#39;
+}
+
+// when
+delete_a_message(id = &#39;-cadsacg&#39;)
+
+// then
+foo.bar.messages should be
+{
+  &#39;-cadsace&#39;: &#39;a&#39;,
+  &#39;-cadsacf&#39;: &#39;b&#39;
+}
+</code></pre>
+
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
