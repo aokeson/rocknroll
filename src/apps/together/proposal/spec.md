@@ -8,14 +8,30 @@ layout: layout.hbs
 
 Our app uses the following structure for the database backend:
 
-* playlist
-  * song
-    * votes
-      * total
-      * user
-    * comment
-      * message
-  * users
+* rocknroll
+  * admin
+    * userName
+		* userName
+		* position
+		* enable
+  * customer
+	* userName
+		* userName
+		* enable
+		* voteSongID
+  * songList
+	* songID
+		* songName
+		* upVote
+		* downVote
+		* enable
+		* songURL
+		* songImage
+  * songDiscussion
+	* songName
+		* userName
+		* comment
+
 
 
 # Actions
@@ -29,8 +45,169 @@ The major actions of our app are:
 
 ## Action: Login and Logout
 
-(TODO: cases)
+### case: Admin logs in
 
+``` javascript
+// given
+rocknroll.Admin.login is
+{
+  'userName': 
+	'userName': 'willy',
+	'position': 'c'
+	'enable': enable
+  'userName': 
+	'userName': 'Alex',
+	'position': 'c'	
+	'enable': enable
+  'userName': 
+	'userName': 'betty',
+	'position': 'c'	
+	'enable': disable	
+}
+
+// when
+user_logsin_viaGithub(id = 'betty',password='1234')
+
+// then
+rocknroll.Admin.login should be
+{
+  'userName': 
+	'userName': 'willy',
+	'position': 'c'
+	'enable': enable	
+  'userName': 
+	'userName': 'Alex',
+	'position': 'c'	
+	'enable': enable	
+  'userName': 
+	'userName': 'Betty',
+	'position': 'c'	
+	'enable': enable	
+}
+```
+
+### case: Admin logs out
+
+``` javascript
+// given
+rocknroll.Admin.login is
+{
+  'userName': 
+	'userName': 'willy',
+	'position': 'c'
+	'enable': 'enable'
+  'userName': 
+	'userName': 'Alex',
+	'position': 'c'	
+	'enable': 'enable'
+  'userName': 
+	'userName': 'betty',
+	'position': 'c'	
+	'enable': 'enable'	
+}
+
+// when
+user_clicks_logout()
+
+// then
+rocknroll.Admin.logs out should be
+{
+  'userName': 
+	'userName': 'willy',
+	'position': 'c'
+	'enable': 'enable'	
+  'userName': 
+	'userName': 'Alex',
+	'position': 'c'	
+	'enable': 'enable'	
+  'userName': 
+	'userName': 'Betty',
+	'position': 'c'	
+	'enable': 'disable'	
+}
+```
+
+### case: User logs in
+
+``` javascript
+// given
+rocknroll.customer.login is
+{
+  'userName': 
+	'userName': 'willy',
+	'enable': 'enable',
+	'voteSongID': '001'
+  'userName': 
+	'userName': 'Alex',
+	'enable': 'enable',
+	'voteSongID': '002'
+  'userName': 
+	'userName': 'betty',
+	'enable': 'disable',
+	'voteSongID': ''
+}
+
+// when
+user_clicks_login()
+
+// then
+rocknroll.Admin.login should be
+{
+  'userName': 
+	'userName': 'willy',
+	'enable': 'enable',
+	'voteSongID': '001'
+  'userName': 
+	'userName': 'Alex',
+	'enable': 'enable',
+	'voteSongID': '002'
+  'userName': 
+	'userName': 'betty',
+	'enable': 'enable',
+	'voteSongID': ''
+}
+```
+
+### case: User logs out
+
+``` javascript
+// given
+rocknroll.customer.logout is
+{
+  'userName': 
+	'userName': 'willy',
+	'enable': 'enable',
+	'voteSongID': '001'
+  'userName': 
+	'userName': 'Alex',
+	'enable': 'enable',
+	'voteSongID': '002'
+  'userName': 
+	'userName': 'betty',
+	'enable': 'enable',
+	'voteSongID': '003'
+}
+
+// when
+user_clicks_logout()
+
+// then
+rocknroll.Admin.login should be
+{
+  'userName': 
+	'userName': 'willy',
+	'enable': 'enable',
+	'voteSongID': '001'
+  'userName': 
+	'userName': 'Alex',
+	'enable': 'enable',
+	'voteSongID': '002'
+  'userName': 
+	'userName': 'betty',
+	'enable': 'disable',
+	'voteSongID': '003'
+}
+```
 ## Action: Voting for songs on a playlist
 
 ### case: user 'a' up votes a song 'd'
