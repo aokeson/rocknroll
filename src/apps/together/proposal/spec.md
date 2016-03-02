@@ -20,18 +20,21 @@ Our app uses the following structure for the database backend:
 		* enable
 		* voteSongID
   * songList
-	* songID
-		* songName
-		* upVote
-		* downVote
-		* enable
-		* songURL
-		* songImage
+	  * songID
+  		* songName
+  		* upVote
+  		* downVote
+  		* enable
+  		* songURL
+  		* songImage
   * songDiscussion
-	* songName
 		* discussionID
 			* userName
 			* comment
+  * currentSong
+    * songName
+    * songURL
+    * songImage
 
 
 
@@ -412,10 +415,100 @@ rocknroll.songDiscussion.d should be
 
 ## Action: Admin edits the song list
 
-(TODO: cases)
+### case: Admin a plays highest voted song b
 
+``` javascript
+// given
+rocknroll.admin.a is
+{
+  'username': 'a',
+  'position': 'c',
+  'enable': enable
+}
+rocknroll.songlist is
+{
+  'songID': 'b, c, d, e, f',
+}
+rocknroll.songlist.songid is
+{
+  'songname': 'b',
+  'upvote': 'b,a,ab,ba',
+  'downvote': ''
+}
+rocknroll.songlist.currentSong is
+{
+  'songname': 'a',
+}
 
+// when
+playNewSong(text = 'b')
 
+// then
+rocknroll.songlist is
+{
+  'songID': 'c, d, e, f',
+}
+rocknroll.songlist.currentSong is
+{
+  'songname': 'b',
+}
+```
+
+### case: Admin a removes downvoted song f
+
+``` javascript
+// given
+rocknroll.admin.a is
+{
+  'username': 'a',
+  'position': 'c',
+  'enable': enable
+}
+rocknroll.songlist is
+{
+  'songID': 'b, c, d, e, f',
+}
+rocknroll.songlist.songid is
+{
+  'songname': 'f',
+  'upvote': '',
+  'downvote': 'b,a,ab,ba'
+}
+
+// when
+removeSong(text = 'f')
+
+// then
+rocknroll.songlist is
+{
+  'songID': 'b, c, d, e',
+}
+```
+
+### case: Admin a removes duplicate song d
+
+``` javascript
+// given
+rocknroll.admin.a is
+{
+  'username': 'a',
+  'position': 'c',
+  'enable': enable
+}
+rocknroll.songlist is
+{
+  'songID': 'b, c, d, d, e, f',
+}
+
+// when
+removeSong(text = 'd')
+
+// then
+rocknroll.songlist is
+{
+  'songID': 'b, c, d, e, f',
+}
+```
 
 (remove the example below before submission)
 
