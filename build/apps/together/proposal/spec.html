@@ -36,27 +36,210 @@
 <h1 id="data">Data</h1>
 <p>Our app uses the following structure for the database backend:</p>
 <ul>
-<li>foo<ul>
-<li>bar<ul>
-<li>ss</li>
-<li>xx</li>
+<li>rocknroll<ul>
+<li>admin<ul>
+<li>userName<ul>
+<li>userName</li>
+<li>position</li>
+<li>enable</li>
 </ul>
 </li>
-<li>messages</li>
+</ul>
+</li>
+<li>customer<ul>
+<li>userName<ul>
+<li>userName</li>
+<li>enable</li>
+<li>voteSongID</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>songList<ul>
+<li>songID<ul>
+<li>songName</li>
+<li>upVote</li>
+<li>downVote</li>
+<li>enable</li>
+<li>songURL</li>
+<li>songImage</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>songDiscussion<ul>
+<li>songName<ul>
+<li>userName</li>
+<li>comment</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h1 id="actions">Actions</h1>
 <p>The major actions of our app are:</p>
 <ul>
-<li>(TODO: action name)</li>
-<li>(TODO: action name)</li>
-<li>(TODO: action name)</li>
-<li>(TODO: action name)</li>
-<li>(TODO: action name)</li>
+<li>Login and Logout</li>
+<li>Voting for songs on a playlist</li>
+<li>Song suggestion</li>
+<li>Post a comment for a song</li>
+<li>Admin edits the song list</li>
 </ul>
-<h2 id="action-todo-name-">Action: (TODO: name)</h2>
-<p>(TODO: cases)</p>
+<h2 id="action-login-and-logout">Action: Login and Logout</h2>
+<h3 id="case-admin-logs-in">case: Admin logs in</h3>
+<pre><code class="javascript">// given
+rocknroll.Admin.login is
+{
+  &#39;userName&#39;: 
+    &#39;userName&#39;: &#39;willy&#39;,
+    &#39;position&#39;: &#39;c&#39;
+    &#39;enable&#39;: enable
+  &#39;userName&#39;: 
+    &#39;userName&#39;: &#39;Alex&#39;,
+    &#39;position&#39;: &#39;c&#39;    
+    &#39;enable&#39;: enable
+  &#39;userName&#39;: 
+    &#39;userName&#39;: &#39;betty&#39;,
+    &#39;position&#39;: &#39;c&#39;    
+    &#39;enable&#39;: disable    
+}
+
+// when
+user_logsin_viaGithub(id = &#39;betty&#39;,password=&#39;1234&#39;)
+
+// then
+rocknroll.Admin.login should be
+{
+  &#39;userName&#39;: 
+    &#39;userName&#39;: &#39;willy&#39;,
+    &#39;position&#39;: &#39;c&#39;
+    &#39;enable&#39;: enable    
+  &#39;userName&#39;: 
+    &#39;userName&#39;: &#39;Alex&#39;,
+    &#39;position&#39;: &#39;c&#39;    
+    &#39;enable&#39;: enable    
+  &#39;userName&#39;: 
+    &#39;userName&#39;: &#39;Betty&#39;,
+    &#39;position&#39;: &#39;c&#39;    
+    &#39;enable&#39;: enable    
+}
+</code></pre>
+<h3 id="case-admin-logs-out">case: Admin logs out</h3>
+<pre><code class="javascript">// given
+rocknroll.Admin.login is
+{
+  &#39;userName&#39;: 
+    &#39;userName&#39;: &#39;willy&#39;,
+    &#39;position&#39;: &#39;c&#39;
+    &#39;enable&#39;: &#39;enable&#39;
+  &#39;userName&#39;: 
+    &#39;userName&#39;: &#39;Alex&#39;,
+    &#39;position&#39;: &#39;c&#39;    
+    &#39;enable&#39;: &#39;enable&#39;
+  &#39;userName&#39;: 
+    &#39;userName&#39;: &#39;betty&#39;,
+    &#39;position&#39;: &#39;c&#39;    
+    &#39;enable&#39;: &#39;enable&#39;    
+}
+
+// when
+user_clicks_logout()
+
+// then
+rocknroll.Admin.logs out should be
+{
+  &#39;userName&#39;: 
+    &#39;userName&#39;: &#39;willy&#39;,
+    &#39;position&#39;: &#39;c&#39;
+    &#39;enable&#39;: &#39;enable&#39;    
+  &#39;userName&#39;: 
+    &#39;userName&#39;: &#39;Alex&#39;,
+    &#39;position&#39;: &#39;c&#39;    
+    &#39;enable&#39;: &#39;enable&#39;    
+  &#39;userName&#39;: 
+    &#39;userName&#39;: &#39;Betty&#39;,
+    &#39;position&#39;: &#39;c&#39;    
+    &#39;enable&#39;: &#39;disable&#39;    
+}
+</code></pre>
+<h3 id="case-user-logs-in">case: User logs in</h3>
+<pre><code class="javascript">// given
+rocknroll.customer.login is
+{
+  &#39;userName&#39;: 
+    &#39;userName&#39;: &#39;willy&#39;,
+    &#39;enable&#39;: &#39;enable&#39;,
+    &#39;voteSongID&#39;: &#39;001&#39;
+  &#39;userName&#39;: 
+    &#39;userName&#39;: &#39;Alex&#39;,
+    &#39;enable&#39;: &#39;enable&#39;,
+    &#39;voteSongID&#39;: &#39;002&#39;
+  &#39;userName&#39;: 
+    &#39;userName&#39;: &#39;betty&#39;,
+    &#39;enable&#39;: &#39;disable&#39;,
+    &#39;voteSongID&#39;: &#39;&#39;
+}
+
+// when
+user_clicks_login()
+
+// then
+rocknroll.Admin.login should be
+{
+  &#39;userName&#39;: 
+    &#39;userName&#39;: &#39;willy&#39;,
+    &#39;enable&#39;: &#39;enable&#39;,
+    &#39;voteSongID&#39;: &#39;001&#39;
+  &#39;userName&#39;: 
+    &#39;userName&#39;: &#39;Alex&#39;,
+    &#39;enable&#39;: &#39;enable&#39;,
+    &#39;voteSongID&#39;: &#39;002&#39;
+  &#39;userName&#39;: 
+    &#39;userName&#39;: &#39;betty&#39;,
+    &#39;enable&#39;: &#39;enable&#39;,
+    &#39;voteSongID&#39;: &#39;&#39;
+}
+</code></pre>
+<h3 id="case-user-logs-out">case: User logs out</h3>
+<pre><code class="javascript">// given
+rocknroll.customer.logout is
+{
+  &#39;userName&#39;: 
+    &#39;userName&#39;: &#39;willy&#39;,
+    &#39;enable&#39;: &#39;enable&#39;,
+    &#39;voteSongID&#39;: &#39;001&#39;
+  &#39;userName&#39;: 
+    &#39;userName&#39;: &#39;Alex&#39;,
+    &#39;enable&#39;: &#39;enable&#39;,
+    &#39;voteSongID&#39;: &#39;002&#39;
+  &#39;userName&#39;: 
+    &#39;userName&#39;: &#39;betty&#39;,
+    &#39;enable&#39;: &#39;enable&#39;,
+    &#39;voteSongID&#39;: &#39;003&#39;
+}
+
+// when
+user_clicks_logout()
+
+// then
+rocknroll.Admin.login should be
+{
+  &#39;userName&#39;: 
+    &#39;userName&#39;: &#39;willy&#39;,
+    &#39;enable&#39;: &#39;enable&#39;,
+    &#39;voteSongID&#39;: &#39;001&#39;
+  &#39;userName&#39;: 
+    &#39;userName&#39;: &#39;Alex&#39;,
+    &#39;enable&#39;: &#39;enable&#39;,
+    &#39;voteSongID&#39;: &#39;002&#39;
+  &#39;userName&#39;: 
+    &#39;userName&#39;: &#39;betty&#39;,
+    &#39;enable&#39;: &#39;disable&#39;,
+    &#39;voteSongID&#39;: &#39;003&#39;
+}
+</code></pre>
 <h2 id="action-todo-name-">Action: (TODO: name)</h2>
 <p>(TODO: cases)</p>
 <h2 id="action-todo-name-">Action: (TODO: name)</h2>
