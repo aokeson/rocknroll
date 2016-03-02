@@ -183,10 +183,10 @@ rocknroll.customer.login is
 }
 
 // when
-user_clicks_login()
+user_logsin_viaGithub(id = &#39;betty&#39;,password=&#39;1234&#39;)
 
 // then
-rocknroll.Admin.login should be
+rocknroll.customer.login should be
 {
   &#39;userName&#39;: 
     &#39;userName&#39;: &#39;willy&#39;,
@@ -224,7 +224,7 @@ rocknroll.customer.logout is
 user_clicks_logout()
 
 // then
-rocknroll.Admin.login should be
+rocknroll.customer.login should be
 {
   &#39;userName&#39;: 
     &#39;userName&#39;: &#39;willy&#39;,
