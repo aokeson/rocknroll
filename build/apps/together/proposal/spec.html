@@ -36,32 +36,189 @@
 <h1 id="data">Data</h1>
 <p>Our app uses the following structure for the database backend:</p>
 <ul>
-<li>foo<ul>
-<li>bar<ul>
-<li>ss</li>
-<li>xx</li>
+<li>playlist<ul>
+<li>song<ul>
+<li>votes<ul>
+<li>total</li>
+<li>user</li>
 </ul>
 </li>
-<li>messages</li>
+<li>comment<ul>
+<li>message</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>users</li>
 </ul>
 </li>
 </ul>
 <h1 id="actions">Actions</h1>
 <p>The major actions of our app are:</p>
 <ul>
-<li>(TODO: action name)</li>
-<li>(TODO: action name)</li>
-<li>(TODO: action name)</li>
-<li>(TODO: action name)</li>
-<li>(TODO: action name)</li>
+<li>Login and Logout</li>
+<li>Voting for songs on a playlist</li>
+<li>Song suggestion</li>
+<li>Post a comment for a song</li>
+<li>Admin edits the song list</li>
 </ul>
-<h2 id="action-todo-name-">Action: (TODO: name)</h2>
+<h2 id="action-login-and-logout">Action: Login and Logout</h2>
 <p>(TODO: cases)</p>
-<h2 id="action-todo-name-">Action: (TODO: name)</h2>
+<h2 id="action-voting-for-songs-on-a-playlist">Action: Voting for songs on a playlist</h2>
+<h3 id="case-user-a-up-votes-a-song-d-">case: user ‘a’ up votes a song ‘d’</h3>
+<pre><code class="javascript">// given
+playlist.d.votes is
+{
+  &#39;total&#39;: &#39;0&#39;,
+  &#39;b&#39;: &#39;up&#39;,
+  &#39;c&#39;: &#39;down&#39;
+}
+
+// when
+upvote(user = &#39;a&#39;)
+
+// then
+playlist.d.votes is
+{
+  &#39;total&#39;: &#39;1&#39;,
+  &#39;b&#39;: &#39;up&#39;,
+  &#39;c&#39;: &#39;down&#39;,
+  &#39;a&#39;: &#39;up&#39;
+}
+reorder()
+</code></pre>
+<h3 id="case-user-a-down-votes-a-song-d-">case: user ‘a’ down votes a song ‘d’</h3>
+<pre><code class="javascript">// given
+playlist.d.votes is
+{
+  &#39;total&#39;: &#39;0&#39;,
+  &#39;b&#39;: &#39;up&#39;,
+  &#39;c&#39;: &#39;down&#39;
+}
+
+// when
+downvote(user = &#39;a&#39;)
+
+// then
+playlist.d.votes is
+{
+  &#39;total&#39;: &#39;-1&#39;,
+  &#39;b&#39;: &#39;up&#39;,
+  &#39;c&#39;: &#39;down&#39;,
+  &#39;a&#39;: &#39;down&#39;
+}
+reorder()
+</code></pre>
+<h3 id="case-user-a-changes-from-up-vote-to-down-vote-for-song-d-">case: user ‘a’ changes from up vote to down vote for song ‘d’</h3>
+<pre><code class="javascript">// given
+playlist.d.votes is
+{
+  &#39;total&#39;: &#39;1&#39;,
+  &#39;a&#39;: &#39;up&#39;,
+  &#39;b&#39;: &#39;up&#39;,
+  &#39;c&#39;: &#39;down&#39;
+}
+
+// when
+downvote(user = &#39;a&#39;)
+
+// then
+playlist.d.votes is
+{
+  &#39;total&#39;: &#39;-1&#39;,
+  &#39;a&#39;: &#39;down&#39;,
+  &#39;b&#39;: &#39;up&#39;,
+  &#39;c&#39;: &#39;down&#39;
+}
+reorder()
+</code></pre>
+<h3 id="case-user-a-changes-from-down-vote-to-up-vote-for-song-d-">case: user ‘a’ changes from down vote to up vote for song ‘d’</h3>
+<pre><code class="javascript">// given
+playlist.d.votes is
+{
+  &#39;total&#39;: &#39;-1&#39;,
+  &#39;a&#39;: &#39;down&#39;,
+  &#39;b&#39;: &#39;up&#39;,
+  &#39;c&#39;: &#39;down&#39;
+}
+
+// when
+upvote(user = &#39;a&#39;)
+
+// then
+playlist.d.votes is
+{
+  &#39;total&#39;: &#39;1&#39;,
+  &#39;a&#39;: &#39;up&#39;,
+  &#39;b&#39;: &#39;up&#39;,
+  &#39;c&#39;: &#39;down&#39;
+}
+reorder()
+</code></pre>
+<h2 id="action-song-suggestion">Action: Song suggestion</h2>
 <p>(TODO: cases)</p>
-<h2 id="action-todo-name-">Action: (TODO: name)</h2>
-<p>(TODO: cases)</p>
-<h2 id="action-todo-name-">Action: (TODO: name)</h2>
+<h2 id="action-post-a-comment-for-a-song">Action: Post a comment for a song</h2>
+<h3 id="case-user-a-posts-comment-c-for-song-d-">case: user ‘a’ posts comment ‘c’ for song ‘d’</h3>
+<pre><code class="javascript">// given
+playlist.d.comment is
+{
+  &#39;e&#39;: &#39;hi&#39;,
+  &#39;f&#39;: &#39;hello&#39;
+}
+
+// when
+comment(user = &#39;a&#39;, comment = &#39;c&#39;)
+
+// then
+playlist.d.comment is
+{
+  &#39;e&#39;: &#39;hi&#39;,
+  &#39;f&#39;: &#39;hello&#39;,
+  &#39;a&#39;: &#39;c&#39;
+}
+</code></pre>
+<h3 id="case-admin-a-deletes-comment-b-from-user-c-for-song-d-">case: admin ‘a’ deletes comment ‘b’ from user ‘c’ for song ‘d’</h3>
+<pre><code class="javascript">// given
+playlist.users is
+{
+  &#39;a&#39;: &#39;admin&#39;,
+  &#39;c&#39;: &#39;user&#39;
+}
+playlist.d.comment is
+{
+  &#39;c&#39;: &#39;b&#39;,
+  &#39;f&#39;: &#39;hello&#39;
+}
+
+// when
+delcomment(user = &#39;c&#39;, comment = &#39;b&#39;)
+
+// then
+playlist.d.comment is
+{
+  &#39;f&#39;: &#39;hello&#39;
+}
+</code></pre>
+<h3 id="case-user-a-posts-link-c-for-song-d-">case: user ‘a’ posts link ‘c’ for song ‘d’</h3>
+<pre><code class="javascript">// given
+playlist.d.comment is
+{
+  &#39;e&#39;: &#39;hi&#39;,
+  &#39;f&#39;: &#39;hello&#39;
+}
+
+// when
+comment(user = &#39;a&#39;, comment = &#39;c&#39;)
+
+// then
+playlist.d.comment is
+{
+  &#39;e&#39;: &#39;hi&#39;,
+  &#39;f&#39;: &#39;hello&#39;,
+  &#39;a&#39;: &#39;c&#39;
+}
+</code></pre>
+<h2 id="action-admin-edits-the-song-list">Action: Admin edits the song list</h2>
 <p>(TODO: cases)</p>
 <p>(remove the example below before submission)</p>
 <h2 id="action-post-a-message-example-">Action: Post A Message (Example)</h2>
