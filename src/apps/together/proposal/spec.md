@@ -415,7 +415,7 @@ rocknroll.songDiscussion.d should be
 
 ## Action: Admin edits the song list
 
-### case: Admin a plays highest voted song b
+### case: Admin 'a' plays highest voted song 'b'
 
 ``` javascript
 // given
@@ -454,7 +454,7 @@ rocknroll.songlist.currentSong is
 }
 ```
 
-### case: Admin a removes downvoted song f
+### case: Admin 'a' removes downvoted song 'f'
 
 ``` javascript
 // given
@@ -485,7 +485,7 @@ rocknroll.songlist is
 }
 ```
 
-### case: Admin a removes duplicate song d
+### case: Admin 'a' removes duplicate song 'd'
 
 ``` javascript
 // given
