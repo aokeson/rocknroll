@@ -29,8 +29,9 @@ Our app uses the following structure for the database backend:
 		* songImage
   * songDiscussion
 	* songName
-		* userName
-		* comment
+		* discussionID
+			* userName
+			* comment
 
 
 
@@ -214,102 +215,96 @@ rocknroll.customer.login should be
 
 ``` javascript
 // given
-playlist.d.votes is
+rocknroll.songlist.songid is
 {
-  'total': '0',
-  'b': 'up',
-  'c': 'down'
+  'songname': 'd',
+  'upvote': 'b',
+  'downvote': 'c,e'
 }
 
 // when
 upvote(user = 'a')
 
 // then
-playlist.d.votes is
+rocknroll.songlist.songid is
 {
-  'total': '1',
-  'b': 'up',
-  'c': 'down',
-  'a': 'up'
+  'songname': 'd',
+  'upvote': 'b,a',
+  'downvote': 'c,e'
 }
-reorder()
+reorder_songs()
 ```
 
 ### case: user 'a' down votes a song 'd'
 
 ``` javascript
 // given
-playlist.d.votes is
+rocknroll.songlist.songid is
 {
-  'total': '0',
-  'b': 'up',
-  'c': 'down'
+  'songname': 'd',
+  'upvote': 'b',
+  'downvote': 'c,e'
 }
 
 // when
 downvote(user = 'a')
 
 // then
-playlist.d.votes is
+rocknroll.songlist.songid is
 {
-  'total': '-1',
-  'b': 'up',
-  'c': 'down',
-  'a': 'down'
+  'songname': 'd',
+  'upvote': 'b',
+  'downvote': 'c,e,a'
 }
-reorder()
+reorder_songs()
 ```
 
 ### case: user 'a' changes from up vote to down vote for song 'd'
 
 ``` javascript
 // given
-playlist.d.votes is
+rocknroll.songlist.songid is
 {
-  'total': '1',
-  'a': 'up',
-  'b': 'up',
-  'c': 'down'
+  'songname': 'd',
+  'upvote': 'b,a',
+  'downvote': 'c,e'
 }
 
 // when
 downvote(user = 'a')
 
 // then
-playlist.d.votes is
+rocknroll.songlist.songid is
 {
-  'total': '-1',
-  'a': 'down',
-  'b': 'up',
-  'c': 'down'
+  'songname': 'd',
+  'upvote': 'b',
+  'downvote': 'c,e,a'
 }
-reorder()
+reorder_songs()
 ```
 
 ### case: user 'a' changes from down vote to up vote for song 'd'
 
 ``` javascript
 // given
-playlist.d.votes is
+rocknroll.songlist.songid is
 {
-  'total': '-1',
-  'a': 'down',
-  'b': 'up',
-  'c': 'down'
+  'songname': 'd',
+  'upvote': 'b',
+  'downvote': 'c,e,a'
 }
 
 // when
 upvote(user = 'a')
 
 // then
-playlist.d.votes is
+rocknroll.songlist.songid is
 {
-  'total': '1',
-  'a': 'up',
-  'b': 'up',
-  'c': 'down'
+  'songname': 'd',
+  'upvote': 'b,a',
+  'downvote': 'c,e'
 }
-reorder()
+reorder_songs()
 ```
 
 ## Action: Song suggestion
@@ -322,46 +317,63 @@ reorder()
 
 ``` javascript
 // given
-playlist.d.comment is
+rocknroll.songDiscussion.d is
 {
-  'e': 'hi',
-  'f': 'hello'
+  'abcde':
+  	'user': 'e',
+  	'comment': 'hi',
+  'abcdf': 
+  	'user': 'f',
+  	'comment': 'hello'
 }
 
 // when
 comment(user = 'a', comment = 'c')
 
 // then
-playlist.d.comment is
+rocknroll.songDiscussion.d should be
 {
-  'e': 'hi',
-  'f': 'hello',
-  'a': 'c'
+  'abcde':
+  	'user': 'e',
+  	'comment': 'hi',
+  'abcdf': 
+  	'user': 'f',
+  	'comment': 'hello'
+  'abcdg':
+  	'user': 'a',
+  	'comment': 'c'
 }
 ```
 
-### case: admin 'a' deletes comment 'b' from user 'c' for song 'd'
+### case: admin 'a' deletes comment 'hi' from user 'd' for song 'd'
 
 ``` javascript
 // given
-playlist.users is
+rocknroll.admin.a is
 {
-  'a': 'admin',
-  'c': 'user'
+  'username': 'a',
+  'position': 'c',
+  'enable': enable
 }
-playlist.d.comment is
+rocknroll.songDiscussion.d is
 {
-  'c': 'b',
-  'f': 'hello'
+  'abcde':
+  	'user': 'e',
+  	'comment': 'hi',
+  'abcdf': 
+  	'user': 'f',
+  	'comment': 'hello'
 }
 
 // when
-delcomment(user = 'c', comment = 'b')
+comment(user = 'e', comment = 'hi')
 
 // then
-playlist.d.comment is
+rocknroll.songDiscussion.d should be
 {
-  'f': 'hello'
+  'abcdf': 
+  	'user': 'f',
+  	'comment': 'hello'
 }
 ```
 
@@ -369,21 +381,32 @@ playlist.d.comment is
 
 ``` javascript
 // given
-playlist.d.comment is
+rocknroll.songDiscussion.d is
 {
-  'e': 'hi',
-  'f': 'hello'
+  'abcde':
+  	'user': 'e',
+  	'comment': 'hi',
+  'abcdf': 
+  	'user': 'f',
+  	'comment': 'hello'
 }
 
 // when
 comment(user = 'a', comment = 'c')
 
 // then
-playlist.d.comment is
+rocknroll.songDiscussion.d should be
 {
-  'e': 'hi',
-  'f': 'hello',
-  'a': 'c'
+  'abcde':
+  	'user': 'e',
+  	'comment': 'hi',
+  'abcdf': 
+  	'user': 'f',
+  	'comment': 'hello',
+  'abcdg':
+  	'user': 'a',
+  	'comment': 'c',
+  	'link': yes
 }
 ```
 

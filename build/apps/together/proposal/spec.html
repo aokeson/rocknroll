@@ -69,8 +69,11 @@
 </li>
 <li>songDiscussion<ul>
 <li>songName<ul>
+<li>discussionID<ul>
 <li>userName</li>
 <li>comment</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -243,155 +246,177 @@ rocknroll.customer.login should be
 <h2 id="action-voting-for-songs-on-a-playlist">Action: Voting for songs on a playlist</h2>
 <h3 id="case-user-a-up-votes-a-song-d-">case: user ‘a’ up votes a song ‘d’</h3>
 <pre><code class="javascript">// given
-playlist.d.votes is
+rocknroll.songlist.songid is
 {
-  &#39;total&#39;: &#39;0&#39;,
-  &#39;b&#39;: &#39;up&#39;,
-  &#39;c&#39;: &#39;down&#39;
+  &#39;songname&#39;: &#39;d&#39;,
+  &#39;upvote&#39;: &#39;b&#39;,
+  &#39;downvote&#39;: &#39;c,e&#39;
 }
 
 // when
 upvote(user = &#39;a&#39;)
 
 // then
-playlist.d.votes is
+rocknroll.songlist.songid is
 {
-  &#39;total&#39;: &#39;1&#39;,
-  &#39;b&#39;: &#39;up&#39;,
-  &#39;c&#39;: &#39;down&#39;,
-  &#39;a&#39;: &#39;up&#39;
+  &#39;songname&#39;: &#39;d&#39;,
+  &#39;upvote&#39;: &#39;b,a&#39;,
+  &#39;downvote&#39;: &#39;c,e&#39;
 }
-reorder()
+reorder_songs()
 </code></pre>
 <h3 id="case-user-a-down-votes-a-song-d-">case: user ‘a’ down votes a song ‘d’</h3>
 <pre><code class="javascript">// given
-playlist.d.votes is
+rocknroll.songlist.songid is
 {
-  &#39;total&#39;: &#39;0&#39;,
-  &#39;b&#39;: &#39;up&#39;,
-  &#39;c&#39;: &#39;down&#39;
+  &#39;songname&#39;: &#39;d&#39;,
+  &#39;upvote&#39;: &#39;b&#39;,
+  &#39;downvote&#39;: &#39;c,e&#39;
 }
 
 // when
 downvote(user = &#39;a&#39;)
 
 // then
-playlist.d.votes is
+rocknroll.songlist.songid is
 {
-  &#39;total&#39;: &#39;-1&#39;,
-  &#39;b&#39;: &#39;up&#39;,
-  &#39;c&#39;: &#39;down&#39;,
-  &#39;a&#39;: &#39;down&#39;
+  &#39;songname&#39;: &#39;d&#39;,
+  &#39;upvote&#39;: &#39;b&#39;,
+  &#39;downvote&#39;: &#39;c,e,a&#39;
 }
-reorder()
+reorder_songs()
 </code></pre>
 <h3 id="case-user-a-changes-from-up-vote-to-down-vote-for-song-d-">case: user ‘a’ changes from up vote to down vote for song ‘d’</h3>
 <pre><code class="javascript">// given
-playlist.d.votes is
+rocknroll.songlist.songid is
 {
-  &#39;total&#39;: &#39;1&#39;,
-  &#39;a&#39;: &#39;up&#39;,
-  &#39;b&#39;: &#39;up&#39;,
-  &#39;c&#39;: &#39;down&#39;
+  &#39;songname&#39;: &#39;d&#39;,
+  &#39;upvote&#39;: &#39;b,a&#39;,
+  &#39;downvote&#39;: &#39;c,e&#39;
 }
 
 // when
 downvote(user = &#39;a&#39;)
 
 // then
-playlist.d.votes is
+rocknroll.songlist.songid is
 {
-  &#39;total&#39;: &#39;-1&#39;,
-  &#39;a&#39;: &#39;down&#39;,
-  &#39;b&#39;: &#39;up&#39;,
-  &#39;c&#39;: &#39;down&#39;
+  &#39;songname&#39;: &#39;d&#39;,
+  &#39;upvote&#39;: &#39;b&#39;,
+  &#39;downvote&#39;: &#39;c,e,a&#39;
 }
-reorder()
+reorder_songs()
 </code></pre>
 <h3 id="case-user-a-changes-from-down-vote-to-up-vote-for-song-d-">case: user ‘a’ changes from down vote to up vote for song ‘d’</h3>
 <pre><code class="javascript">// given
-playlist.d.votes is
+rocknroll.songlist.songid is
 {
-  &#39;total&#39;: &#39;-1&#39;,
-  &#39;a&#39;: &#39;down&#39;,
-  &#39;b&#39;: &#39;up&#39;,
-  &#39;c&#39;: &#39;down&#39;
+  &#39;songname&#39;: &#39;d&#39;,
+  &#39;upvote&#39;: &#39;b&#39;,
+  &#39;downvote&#39;: &#39;c,e,a&#39;
 }
 
 // when
 upvote(user = &#39;a&#39;)
 
 // then
-playlist.d.votes is
+rocknroll.songlist.songid is
 {
-  &#39;total&#39;: &#39;1&#39;,
-  &#39;a&#39;: &#39;up&#39;,
-  &#39;b&#39;: &#39;up&#39;,
-  &#39;c&#39;: &#39;down&#39;
+  &#39;songname&#39;: &#39;d&#39;,
+  &#39;upvote&#39;: &#39;b,a&#39;,
+  &#39;downvote&#39;: &#39;c,e&#39;
 }
-reorder()
+reorder_songs()
 </code></pre>
 <h2 id="action-song-suggestion">Action: Song suggestion</h2>
 <p>(TODO: cases)</p>
 <h2 id="action-post-a-comment-for-a-song">Action: Post a comment for a song</h2>
 <h3 id="case-user-a-posts-comment-c-for-song-d-">case: user ‘a’ posts comment ‘c’ for song ‘d’</h3>
 <pre><code class="javascript">// given
-playlist.d.comment is
+rocknroll.songDiscussion.d is
 {
-  &#39;e&#39;: &#39;hi&#39;,
-  &#39;f&#39;: &#39;hello&#39;
+  &#39;abcde&#39;:
+      &#39;user&#39;: &#39;e&#39;,
+      &#39;comment&#39;: &#39;hi&#39;,
+  &#39;abcdf&#39;: 
+      &#39;user&#39;: &#39;f&#39;,
+      &#39;comment&#39;: &#39;hello&#39;
 }
 
 // when
 comment(user = &#39;a&#39;, comment = &#39;c&#39;)
 
 // then
-playlist.d.comment is
+rocknroll.songDiscussion.d should be
 {
-  &#39;e&#39;: &#39;hi&#39;,
-  &#39;f&#39;: &#39;hello&#39;,
-  &#39;a&#39;: &#39;c&#39;
+  &#39;abcde&#39;:
+      &#39;user&#39;: &#39;e&#39;,
+      &#39;comment&#39;: &#39;hi&#39;,
+  &#39;abcdf&#39;: 
+      &#39;user&#39;: &#39;f&#39;,
+      &#39;comment&#39;: &#39;hello&#39;
+  &#39;abcdg&#39;:
+      &#39;user&#39;: &#39;a&#39;,
+      &#39;comment&#39;: &#39;c&#39;
 }
 </code></pre>
-<h3 id="case-admin-a-deletes-comment-b-from-user-c-for-song-d-">case: admin ‘a’ deletes comment ‘b’ from user ‘c’ for song ‘d’</h3>
+<h3 id="case-admin-a-deletes-comment-hi-from-user-d-for-song-d-">case: admin ‘a’ deletes comment ‘hi’ from user ‘d’ for song ‘d’</h3>
 <pre><code class="javascript">// given
-playlist.users is
+rocknroll.admin.a is
 {
-  &#39;a&#39;: &#39;admin&#39;,
-  &#39;c&#39;: &#39;user&#39;
+  &#39;username&#39;: &#39;a&#39;,
+  &#39;position&#39;: &#39;c&#39;,
+  &#39;enable&#39;: enable
 }
-playlist.d.comment is
+rocknroll.songDiscussion.d is
 {
-  &#39;c&#39;: &#39;b&#39;,
-  &#39;f&#39;: &#39;hello&#39;
+  &#39;abcde&#39;:
+      &#39;user&#39;: &#39;e&#39;,
+      &#39;comment&#39;: &#39;hi&#39;,
+  &#39;abcdf&#39;: 
+      &#39;user&#39;: &#39;f&#39;,
+      &#39;comment&#39;: &#39;hello&#39;
 }
 
 // when
-delcomment(user = &#39;c&#39;, comment = &#39;b&#39;)
+comment(user = &#39;e&#39;, comment = &#39;hi&#39;)
 
 // then
-playlist.d.comment is
+rocknroll.songDiscussion.d should be
 {
-  &#39;f&#39;: &#39;hello&#39;
+  &#39;abcdf&#39;: 
+      &#39;user&#39;: &#39;f&#39;,
+      &#39;comment&#39;: &#39;hello&#39;
 }
 </code></pre>
 <h3 id="case-user-a-posts-link-c-for-song-d-">case: user ‘a’ posts link ‘c’ for song ‘d’</h3>
 <pre><code class="javascript">// given
-playlist.d.comment is
+rocknroll.songDiscussion.d is
 {
-  &#39;e&#39;: &#39;hi&#39;,
-  &#39;f&#39;: &#39;hello&#39;
+  &#39;abcde&#39;:
+      &#39;user&#39;: &#39;e&#39;,
+      &#39;comment&#39;: &#39;hi&#39;,
+  &#39;abcdf&#39;: 
+      &#39;user&#39;: &#39;f&#39;,
+      &#39;comment&#39;: &#39;hello&#39;
 }
 
 // when
 comment(user = &#39;a&#39;, comment = &#39;c&#39;)
 
 // then
-playlist.d.comment is
+rocknroll.songDiscussion.d should be
 {
-  &#39;e&#39;: &#39;hi&#39;,
-  &#39;f&#39;: &#39;hello&#39;,
-  &#39;a&#39;: &#39;c&#39;
+  &#39;abcde&#39;:
+      &#39;user&#39;: &#39;e&#39;,
+      &#39;comment&#39;: &#39;hi&#39;,
+  &#39;abcdf&#39;: 
+      &#39;user&#39;: &#39;f&#39;,
+      &#39;comment&#39;: &#39;hello&#39;,
+  &#39;abcdg&#39;:
+      &#39;user&#39;: &#39;a&#39;,
+      &#39;comment&#39;: &#39;c&#39;,
+      &#39;link&#39;: yes
 }
 </code></pre>
 <h2 id="action-admin-edits-the-song-list">Action: Admin edits the song list</h2>
