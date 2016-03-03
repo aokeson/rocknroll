@@ -22,6 +22,7 @@ Our app uses the following structure for the database backend:
   * songList
 	  * songID
   		* songName
+  		* artist
   		* upVote
   		* downVote
   		* enable
@@ -66,7 +67,11 @@ rocknroll.Admin.login is
   'betty': 
 	'userName': 'betty',
 	'position': 'c'	
-	'enable': disable	
+	'enable': disable
+  'tyler':
+  	'userName': 'tyler',
+	'position': 'c'	
+	'enable': enable
 }
 
 // when
@@ -86,7 +91,11 @@ rocknroll.Admin.login should be
   'Betty': 
 	'userName': 'Betty',
 	'position': 'c'	
-	'enable': enable	
+	'enable': enable
+  'tyler':
+  	'userName': 'tyler',
+	'position': 'c'	
+	'enable': enable
 }
 ```
 
@@ -107,7 +116,11 @@ rocknroll.Admin.login is
   'betty': 
 	'userName': 'betty',
 	'position': 'c'	
-	'enable': 'enable'	
+	'enable': 'enable'
+  'tyler':
+  	'userName': 'tyler',
+	'position': 'c'	
+	'enable': enable
 }
 
 // when
@@ -127,7 +140,11 @@ rocknroll.Admin.logs out should be
   'Betty': 
 	'userName': 'Betty',
 	'position': 'c'	
-	'enable': 'disable'	
+	'enable': 'disable'
+  'tyler':
+  	'userName': 'tyler',
+	'position': 'c'	
+	'enable': enable
 }
 ```
 
@@ -149,6 +166,10 @@ rocknroll.customer.login is
 	'userName': 'betty',
 	'enable': 'disable',
 	'voteSongID': ''
+  'tyler': 
+	'userName': 'tyler',
+	'enable': 'enable',
+	'voteSongID': '004'
 }
 
 // when
@@ -169,6 +190,10 @@ rocknroll.customer.login should be
 	'userName': 'betty',
 	'enable': 'enable',
 	'voteSongID': ''
+  'tyler': 
+	'userName': 'tyler',
+	'enable': 'enable',
+	'voteSongID': '004'
 }
 ```
 
@@ -190,6 +215,10 @@ rocknroll.customer.logout is
 	'userName': 'betty',
 	'enable': 'enable',
 	'voteSongID': '003'
+  'tyler': 
+	'userName': 'tyler',
+	'enable': 'enable',
+	'voteSongID': '004'
 }
 
 // when
@@ -210,6 +239,10 @@ rocknroll.customer.login should be
 	'userName': 'betty',
 	'enable': 'disable',
 	'voteSongID': '003'
+  'tyler': 
+	'userName': 'tyler',
+	'enable': 'enable',
+	'voteSongID': ''
 }
 ```
 ## Action: Voting for songs on a playlist
@@ -312,8 +345,110 @@ reorder_songs()
 
 ## Action: Song suggestion
 
-(TODO: cases)
+### case: user 'a' suggests new song
 
+``` javascript
+// given
+rocknroll.songList is
+{
+  '001':
+  	'songName': '3005',
+  	'artist': 'Childish Gambino',
+  	'upVote': '4',
+  	'downVote': '1',
+  	'enable': 'enable' ,
+  	'songURL': 'youtube.com/lkjiwj',
+  	'songImage': 'google.com/images/ji9ij2'
+  '002':
+  	'songName': 'Intro',
+  	'artist': 'XX',
+  	'upVote': '3',
+  	'downVote': '1',
+  	'enable': 'disable' ,
+  	'songURL': 'youtube.com/lkbaabwj',
+  	'songImage': 'google.com/images/ji922fj2'
+}
+
+// when
+suggest(user = 'a', songName = 'Locked out of Heaven', artist = "Bruno Mars")
+
+// then
+rocknroll.songList should be
+{
+  '001':
+  	'songName': '3005',
+  	'artist': 'Childish Gambino',
+  	'upVote': '4',
+  	'downVote': '1',
+  	'enable': 'enable' ,
+  	'songURL': 'youtube.com/lkjiwj',
+  	'songImage': 'google.com/images/ji9ij2'
+  '002':
+  	'songName': 'Intro',
+  	'artist': 'XX',
+  	'upVote': '3',
+  	'downVote': '1',
+  	'enable': 'disable' ,
+  	'songURL': 'youtube.com/lkbaabwj',
+  	'songImage': 'google.com/images/ji922fj2'
+  '003':
+  	'songName': 'Locked out of heaven',
+  	'artist': 'Bruno Mars',
+  	'upVote': '0',
+  	'downVote': '0',
+  	'enable': 'disable' ,
+  	'songURL': 'youtube.com/lkbaabwj',
+  	'songImage': 'google.com/images/ji922fj2'
+}
+```
+### case: user 'a' suggests already existing song 'XX'
+
+``` javascript
+// given
+rocknroll.songList is
+{
+  '001':
+  	'songName': '3005',
+  	'artist': 'Childish Gambino',
+  	'upVote': '4',
+  	'downVote': '1',
+  	'enable': 'enable' ,
+  	'songURL': 'youtube.com/lkjiwj',
+  	'songImage': 'google.com/images/ji9ij2'
+  '002':
+  	'songName': 'Intro',
+  	'artist': 'XX',
+  	'upVote': '3',
+  	'downVote': '1',
+  	'enable': 'disable' ,
+  	'songURL': 'youtube.com/lkbaabwj',
+  	'songImage': 'google.com/images/ji922fj2'
+}
+
+// when
+suggest(user = 'a', songName = 'Intro', artist = 'XX')
+
+// then
+rocknroll.songList should be
+{
+  '001':
+  	'songName': '3005',
+  	'artist': 'Childish Gambino',
+  	'upVote': '4',
+  	'downVote': '1',
+  	'enable': 'enable' ,
+  	'songURL': 'youtube.com/lkjiwj',
+  	'songImage': 'google.com/images/ji9ij2'
+  '002':
+  	'songName': 'Intro',
+  	'artist': 'XX',
+  	'upVote': '3',
+  	'downVote': '1',
+  	'enable': 'disable' ,
+  	'songURL': 'youtube.com/lkbaabwj',
+  	'songImage': 'google.com/images/ji922fj2'
+}
+```
 ## Action: Post a comment for a song
 
 ### case: user 'a' posts comment 'c' for song 'd'
