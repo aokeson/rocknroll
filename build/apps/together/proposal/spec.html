@@ -67,15 +67,14 @@
 </li>
 </ul>
 </li>
-<li>songDiscussion<ul>
-<li>songName<ul>
-<li>discussionID<ul>
-<li>userName</li>
-<li>comment</li>
-</ul>
-</li>
-</ul>
-</li>
+<li>songDiscussion<pre><code>* discussionID
+    * userName
+    * comment
+</code></pre></li>
+<li>currentSong<ul>
+<li>songName</li>
+<li>songURL</li>
+<li>songImage</li>
 </ul>
 </li>
 </ul>
@@ -95,15 +94,15 @@
 <pre><code class="javascript">// given
 rocknroll.Admin.login is
 {
-  &#39;userName&#39;: 
+  &#39;willy&#39;: 
     &#39;userName&#39;: &#39;willy&#39;,
     &#39;position&#39;: &#39;c&#39;
     &#39;enable&#39;: enable
-  &#39;userName&#39;: 
+  &#39;Alex&#39;: 
     &#39;userName&#39;: &#39;Alex&#39;,
     &#39;position&#39;: &#39;c&#39;    
     &#39;enable&#39;: enable
-  &#39;userName&#39;: 
+  &#39;betty&#39;: 
     &#39;userName&#39;: &#39;betty&#39;,
     &#39;position&#39;: &#39;c&#39;    
     &#39;enable&#39;: disable    
@@ -115,15 +114,15 @@ user_logsin_viaGithub(id = &#39;betty&#39;,password=&#39;1234&#39;)
 // then
 rocknroll.Admin.login should be
 {
-  &#39;userName&#39;: 
+  &#39;willy&#39;: 
     &#39;userName&#39;: &#39;willy&#39;,
     &#39;position&#39;: &#39;c&#39;
     &#39;enable&#39;: enable    
-  &#39;userName&#39;: 
+  &#39;Alex&#39;: 
     &#39;userName&#39;: &#39;Alex&#39;,
     &#39;position&#39;: &#39;c&#39;    
     &#39;enable&#39;: enable    
-  &#39;userName&#39;: 
+  &#39;Betty&#39;: 
     &#39;userName&#39;: &#39;Betty&#39;,
     &#39;position&#39;: &#39;c&#39;    
     &#39;enable&#39;: enable    
@@ -133,15 +132,15 @@ rocknroll.Admin.login should be
 <pre><code class="javascript">// given
 rocknroll.Admin.login is
 {
-  &#39;userName&#39;: 
+  &#39;willy&#39;: 
     &#39;userName&#39;: &#39;willy&#39;,
     &#39;position&#39;: &#39;c&#39;
     &#39;enable&#39;: &#39;enable&#39;
-  &#39;userName&#39;: 
+  &#39;Alex&#39;: 
     &#39;userName&#39;: &#39;Alex&#39;,
     &#39;position&#39;: &#39;c&#39;    
     &#39;enable&#39;: &#39;enable&#39;
-  &#39;userName&#39;: 
+  &#39;betty&#39;: 
     &#39;userName&#39;: &#39;betty&#39;,
     &#39;position&#39;: &#39;c&#39;    
     &#39;enable&#39;: &#39;enable&#39;    
@@ -153,15 +152,15 @@ user_clicks_logout()
 // then
 rocknroll.Admin.logs out should be
 {
-  &#39;userName&#39;: 
+  &#39;willy&#39;: 
     &#39;userName&#39;: &#39;willy&#39;,
     &#39;position&#39;: &#39;c&#39;
     &#39;enable&#39;: &#39;enable&#39;    
-  &#39;userName&#39;: 
+  &#39;Alex&#39;: 
     &#39;userName&#39;: &#39;Alex&#39;,
     &#39;position&#39;: &#39;c&#39;    
     &#39;enable&#39;: &#39;enable&#39;    
-  &#39;userName&#39;: 
+  &#39;Betty&#39;: 
     &#39;userName&#39;: &#39;Betty&#39;,
     &#39;position&#39;: &#39;c&#39;    
     &#39;enable&#39;: &#39;disable&#39;    
@@ -171,15 +170,15 @@ rocknroll.Admin.logs out should be
 <pre><code class="javascript">// given
 rocknroll.customer.login is
 {
-  &#39;userName&#39;: 
+  &#39;willy&#39;: 
     &#39;userName&#39;: &#39;willy&#39;,
     &#39;enable&#39;: &#39;enable&#39;,
     &#39;voteSongID&#39;: &#39;001&#39;
-  &#39;userName&#39;: 
+  &#39;Alex&#39;: 
     &#39;userName&#39;: &#39;Alex&#39;,
     &#39;enable&#39;: &#39;enable&#39;,
     &#39;voteSongID&#39;: &#39;002&#39;
-  &#39;userName&#39;: 
+  &#39;betty&#39;: 
     &#39;userName&#39;: &#39;betty&#39;,
     &#39;enable&#39;: &#39;disable&#39;,
     &#39;voteSongID&#39;: &#39;&#39;
@@ -191,15 +190,15 @@ user_logsin_viaGithub(id = &#39;betty&#39;,password=&#39;1234&#39;)
 // then
 rocknroll.customer.login should be
 {
-  &#39;userName&#39;: 
+  &#39;willy&#39;: 
     &#39;userName&#39;: &#39;willy&#39;,
     &#39;enable&#39;: &#39;enable&#39;,
     &#39;voteSongID&#39;: &#39;001&#39;
-  &#39;userName&#39;: 
+  &#39;Alex&#39;: 
     &#39;userName&#39;: &#39;Alex&#39;,
     &#39;enable&#39;: &#39;enable&#39;,
     &#39;voteSongID&#39;: &#39;002&#39;
-  &#39;userName&#39;: 
+  &#39;betty&#39;: 
     &#39;userName&#39;: &#39;betty&#39;,
     &#39;enable&#39;: &#39;enable&#39;,
     &#39;voteSongID&#39;: &#39;&#39;
@@ -209,15 +208,15 @@ rocknroll.customer.login should be
 <pre><code class="javascript">// given
 rocknroll.customer.logout is
 {
-  &#39;userName&#39;: 
+  &#39;willy&#39;: 
     &#39;userName&#39;: &#39;willy&#39;,
     &#39;enable&#39;: &#39;enable&#39;,
     &#39;voteSongID&#39;: &#39;001&#39;
-  &#39;userName&#39;: 
+  &#39;Alex&#39;: 
     &#39;userName&#39;: &#39;Alex&#39;,
     &#39;enable&#39;: &#39;enable&#39;,
     &#39;voteSongID&#39;: &#39;002&#39;
-  &#39;userName&#39;: 
+  &#39;betty&#39;: 
     &#39;userName&#39;: &#39;betty&#39;,
     &#39;enable&#39;: &#39;enable&#39;,
     &#39;voteSongID&#39;: &#39;003&#39;
@@ -229,15 +228,15 @@ user_clicks_logout()
 // then
 rocknroll.customer.login should be
 {
-  &#39;userName&#39;: 
+  &#39;willy&#39;: 
     &#39;userName&#39;: &#39;willy&#39;,
     &#39;enable&#39;: &#39;enable&#39;,
     &#39;voteSongID&#39;: &#39;001&#39;
-  &#39;userName&#39;: 
+  &#39;Alex&#39;: 
     &#39;userName&#39;: &#39;Alex&#39;,
     &#39;enable&#39;: &#39;enable&#39;,
     &#39;voteSongID&#39;: &#39;002&#39;
-  &#39;userName&#39;: 
+  &#39;betty&#39;: 
     &#39;userName&#39;: &#39;betty&#39;,
     &#39;enable&#39;: &#39;disable&#39;,
     &#39;voteSongID&#39;: &#39;003&#39;
@@ -420,7 +419,92 @@ rocknroll.songDiscussion.d should be
 }
 </code></pre>
 <h2 id="action-admin-edits-the-song-list">Action: Admin edits the song list</h2>
-<p>(TODO: cases)</p>
+<h3 id="case-admin-a-plays-highest-voted-song-b-">case: Admin ‘a’ plays highest voted song ‘b’</h3>
+<pre><code class="javascript">// given
+rocknroll.admin.a is
+{
+  &#39;username&#39;: &#39;a&#39;,
+  &#39;position&#39;: &#39;c&#39;,
+  &#39;enable&#39;: enable
+}
+rocknroll.songlist is
+{
+  &#39;songID&#39;: &#39;b, c, d, e, f&#39;,
+}
+rocknroll.songlist.songid is
+{
+  &#39;songname&#39;: &#39;b&#39;,
+  &#39;upvote&#39;: &#39;b,a,ab,ba&#39;,
+  &#39;downvote&#39;: &#39;&#39;
+}
+rocknroll.songlist.currentSong is
+{
+  &#39;songname&#39;: &#39;a&#39;,
+}
+
+// when
+playNewSong(text = &#39;b&#39;)
+
+// then
+rocknroll.songlist is
+{
+  &#39;songID&#39;: &#39;c, d, e, f&#39;,
+}
+rocknroll.songlist.currentSong is
+{
+  &#39;songname&#39;: &#39;b&#39;,
+}
+</code></pre>
+<h3 id="case-admin-a-removes-downvoted-song-f-">case: Admin ‘a’ removes downvoted song ‘f’</h3>
+<pre><code class="javascript">// given
+rocknroll.admin.a is
+{
+  &#39;username&#39;: &#39;a&#39;,
+  &#39;position&#39;: &#39;c&#39;,
+  &#39;enable&#39;: enable
+}
+rocknroll.songlist is
+{
+  &#39;songID&#39;: &#39;b, c, d, e, f&#39;,
+}
+rocknroll.songlist.songid is
+{
+  &#39;songname&#39;: &#39;f&#39;,
+  &#39;upvote&#39;: &#39;&#39;,
+  &#39;downvote&#39;: &#39;b,a,ab,ba&#39;
+}
+
+// when
+removeSong(text = &#39;f&#39;)
+
+// then
+rocknroll.songlist is
+{
+  &#39;songID&#39;: &#39;b, c, d, e&#39;,
+}
+</code></pre>
+<h3 id="case-admin-a-removes-duplicate-song-d-">case: Admin ‘a’ removes duplicate song ‘d’</h3>
+<pre><code class="javascript">// given
+rocknroll.admin.a is
+{
+  &#39;username&#39;: &#39;a&#39;,
+  &#39;position&#39;: &#39;c&#39;,
+  &#39;enable&#39;: enable
+}
+rocknroll.songlist is
+{
+  &#39;songID&#39;: &#39;b, c, d, d, e, f&#39;,
+}
+
+// when
+removeSong(text = &#39;d&#39;)
+
+// then
+rocknroll.songlist is
+{
+  &#39;songID&#39;: &#39;b, c, d, e, f&#39;,
+}
+</code></pre>
 <p>(remove the example below before submission)</p>
 <h2 id="action-post-a-message-example-">Action: Post A Message (Example)</h2>
 <h3 id="case-post-a-message-d-">case: post a message ‘d’</h3>

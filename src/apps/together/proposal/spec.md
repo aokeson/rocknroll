@@ -55,15 +55,15 @@ The major actions of our app are:
 // given
 rocknroll.Admin.login is
 {
-  'userName': 
+  'willy': 
 	'userName': 'willy',
 	'position': 'c'
 	'enable': enable
-  'userName': 
+  'Alex': 
 	'userName': 'Alex',
 	'position': 'c'	
 	'enable': enable
-  'userName': 
+  'betty': 
 	'userName': 'betty',
 	'position': 'c'	
 	'enable': disable	
@@ -75,15 +75,15 @@ user_logsin_viaGithub(id = 'betty',password='1234')
 // then
 rocknroll.Admin.login should be
 {
-  'userName': 
+  'willy': 
 	'userName': 'willy',
 	'position': 'c'
 	'enable': enable	
-  'userName': 
+  'Alex': 
 	'userName': 'Alex',
 	'position': 'c'	
 	'enable': enable	
-  'userName': 
+  'Betty': 
 	'userName': 'Betty',
 	'position': 'c'	
 	'enable': enable	
@@ -96,15 +96,15 @@ rocknroll.Admin.login should be
 // given
 rocknroll.Admin.login is
 {
-  'userName': 
+  'willy': 
 	'userName': 'willy',
 	'position': 'c'
 	'enable': 'enable'
-  'userName': 
+  'Alex': 
 	'userName': 'Alex',
 	'position': 'c'	
 	'enable': 'enable'
-  'userName': 
+  'betty': 
 	'userName': 'betty',
 	'position': 'c'	
 	'enable': 'enable'	
@@ -116,15 +116,15 @@ user_clicks_logout()
 // then
 rocknroll.Admin.logs out should be
 {
-  'userName': 
+  'willy': 
 	'userName': 'willy',
 	'position': 'c'
 	'enable': 'enable'	
-  'userName': 
+  'Alex': 
 	'userName': 'Alex',
 	'position': 'c'	
 	'enable': 'enable'	
-  'userName': 
+  'Betty': 
 	'userName': 'Betty',
 	'position': 'c'	
 	'enable': 'disable'	
@@ -137,15 +137,15 @@ rocknroll.Admin.logs out should be
 // given
 rocknroll.customer.login is
 {
-  'userName': 
+  'willy': 
 	'userName': 'willy',
 	'enable': 'enable',
 	'voteSongID': '001'
-  'userName': 
+  'Alex': 
 	'userName': 'Alex',
 	'enable': 'enable',
 	'voteSongID': '002'
-  'userName': 
+  'betty': 
 	'userName': 'betty',
 	'enable': 'disable',
 	'voteSongID': ''
@@ -157,15 +157,15 @@ user_logsin_viaGithub(id = 'betty',password='1234')
 // then
 rocknroll.customer.login should be
 {
-  'userName': 
+  'willy': 
 	'userName': 'willy',
 	'enable': 'enable',
 	'voteSongID': '001'
-  'userName': 
+  'Alex': 
 	'userName': 'Alex',
 	'enable': 'enable',
 	'voteSongID': '002'
-  'userName': 
+  'betty': 
 	'userName': 'betty',
 	'enable': 'enable',
 	'voteSongID': ''
@@ -178,15 +178,15 @@ rocknroll.customer.login should be
 // given
 rocknroll.customer.logout is
 {
-  'userName': 
+  'willy': 
 	'userName': 'willy',
 	'enable': 'enable',
 	'voteSongID': '001'
-  'userName': 
+  'Alex': 
 	'userName': 'Alex',
 	'enable': 'enable',
 	'voteSongID': '002'
-  'userName': 
+  'betty': 
 	'userName': 'betty',
 	'enable': 'enable',
 	'voteSongID': '003'
@@ -198,15 +198,15 @@ user_clicks_logout()
 // then
 rocknroll.customer.login should be
 {
-  'userName': 
+  'willy': 
 	'userName': 'willy',
 	'enable': 'enable',
 	'voteSongID': '001'
-  'userName': 
+  'Alex': 
 	'userName': 'Alex',
 	'enable': 'enable',
 	'voteSongID': '002'
-  'userName': 
+  'betty': 
 	'userName': 'betty',
 	'enable': 'disable',
 	'voteSongID': '003'
