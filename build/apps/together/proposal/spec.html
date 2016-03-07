@@ -58,6 +58,7 @@
 <li>songList<ul>
 <li>songID<ul>
 <li>songName</li>
+<li>artist</li>
 <li>upVote</li>
 <li>downVote</li>
 <li>enable</li>
@@ -67,10 +68,14 @@
 </li>
 </ul>
 </li>
-<li>songDiscussion<pre><code>* discussionID
-    * userName
-    * comment
-</code></pre></li>
+<li>songDiscussion<ul>
+<li>discussionID<ul>
+<li>username</li>
+<li>comment</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>currentSong<ul>
 <li>songName</li>
 <li>songURL</li>
@@ -105,7 +110,11 @@ rocknroll.Admin.login is
   &#39;betty&#39;: 
     &#39;userName&#39;: &#39;betty&#39;,
     &#39;position&#39;: &#39;c&#39;    
-    &#39;enable&#39;: disable    
+    &#39;enable&#39;: disable
+  &#39;tyler&#39;:
+      &#39;userName&#39;: &#39;tyler&#39;,
+    &#39;position&#39;: &#39;c&#39;    
+    &#39;enable&#39;: enable
 }
 
 // when
@@ -125,7 +134,11 @@ rocknroll.Admin.login should be
   &#39;Betty&#39;: 
     &#39;userName&#39;: &#39;Betty&#39;,
     &#39;position&#39;: &#39;c&#39;    
-    &#39;enable&#39;: enable    
+    &#39;enable&#39;: enable
+  &#39;tyler&#39;:
+      &#39;userName&#39;: &#39;tyler&#39;,
+    &#39;position&#39;: &#39;c&#39;    
+    &#39;enable&#39;: enable
 }
 </code></pre>
 <h3 id="case-admin-logs-out">case: Admin logs out</h3>
@@ -143,7 +156,11 @@ rocknroll.Admin.login is
   &#39;betty&#39;: 
     &#39;userName&#39;: &#39;betty&#39;,
     &#39;position&#39;: &#39;c&#39;    
-    &#39;enable&#39;: &#39;enable&#39;    
+    &#39;enable&#39;: &#39;enable&#39;
+  &#39;tyler&#39;:
+      &#39;userName&#39;: &#39;tyler&#39;,
+    &#39;position&#39;: &#39;c&#39;    
+    &#39;enable&#39;: enable
 }
 
 // when
@@ -163,7 +180,11 @@ rocknroll.Admin.logs out should be
   &#39;Betty&#39;: 
     &#39;userName&#39;: &#39;Betty&#39;,
     &#39;position&#39;: &#39;c&#39;    
-    &#39;enable&#39;: &#39;disable&#39;    
+    &#39;enable&#39;: &#39;disable&#39;
+  &#39;tyler&#39;:
+      &#39;userName&#39;: &#39;tyler&#39;,
+    &#39;position&#39;: &#39;c&#39;    
+    &#39;enable&#39;: enable
 }
 </code></pre>
 <h3 id="case-user-logs-in">case: User logs in</h3>
@@ -182,6 +203,10 @@ rocknroll.customer.login is
     &#39;userName&#39;: &#39;betty&#39;,
     &#39;enable&#39;: &#39;disable&#39;,
     &#39;voteSongID&#39;: &#39;&#39;
+  &#39;tyler&#39;: 
+    &#39;userName&#39;: &#39;tyler&#39;,
+    &#39;enable&#39;: &#39;enable&#39;,
+    &#39;voteSongID&#39;: &#39;004&#39;
 }
 
 // when
@@ -202,6 +227,10 @@ rocknroll.customer.login should be
     &#39;userName&#39;: &#39;betty&#39;,
     &#39;enable&#39;: &#39;enable&#39;,
     &#39;voteSongID&#39;: &#39;&#39;
+  &#39;tyler&#39;: 
+    &#39;userName&#39;: &#39;tyler&#39;,
+    &#39;enable&#39;: &#39;enable&#39;,
+    &#39;voteSongID&#39;: &#39;004&#39;
 }
 </code></pre>
 <h3 id="case-user-logs-out">case: User logs out</h3>
@@ -220,6 +249,10 @@ rocknroll.customer.logout is
     &#39;userName&#39;: &#39;betty&#39;,
     &#39;enable&#39;: &#39;enable&#39;,
     &#39;voteSongID&#39;: &#39;003&#39;
+  &#39;tyler&#39;: 
+    &#39;userName&#39;: &#39;tyler&#39;,
+    &#39;enable&#39;: &#39;enable&#39;,
+    &#39;voteSongID&#39;: &#39;004&#39;
 }
 
 // when
@@ -240,6 +273,10 @@ rocknroll.customer.login should be
     &#39;userName&#39;: &#39;betty&#39;,
     &#39;enable&#39;: &#39;disable&#39;,
     &#39;voteSongID&#39;: &#39;003&#39;
+  &#39;tyler&#39;: 
+    &#39;userName&#39;: &#39;tyler&#39;,
+    &#39;enable&#39;: &#39;enable&#39;,
+    &#39;voteSongID&#39;: &#39;&#39;
 }
 </code></pre>
 <h2 id="action-voting-for-songs-on-a-playlist">Action: Voting for songs on a playlist</h2>
@@ -328,7 +365,106 @@ rocknroll.songlist.songid is
 reorder_songs()
 </code></pre>
 <h2 id="action-song-suggestion">Action: Song suggestion</h2>
-<p>(TODO: cases)</p>
+<h3 id="case-user-a-suggests-new-song">case: user ‘a’ suggests new song</h3>
+<pre><code class="javascript">// given
+rocknroll.songList is
+{
+  &#39;001&#39;:
+      &#39;songName&#39;: &#39;3005&#39;,
+      &#39;artist&#39;: &#39;Childish Gambino&#39;,
+      &#39;upVote&#39;: &#39;4&#39;,
+      &#39;downVote&#39;: &#39;1&#39;,
+      &#39;enable&#39;: &#39;enable&#39; ,
+      &#39;songURL&#39;: &#39;youtube.com/lkjiwj&#39;,
+      &#39;songImage&#39;: &#39;google.com/images/ji9ij2&#39;
+  &#39;002&#39;:
+      &#39;songName&#39;: &#39;Intro&#39;,
+      &#39;artist&#39;: &#39;XX&#39;,
+      &#39;upVote&#39;: &#39;3&#39;,
+      &#39;downVote&#39;: &#39;1&#39;,
+      &#39;enable&#39;: &#39;disable&#39; ,
+      &#39;songURL&#39;: &#39;youtube.com/lkbaabwj&#39;,
+      &#39;songImage&#39;: &#39;google.com/images/ji922fj2&#39;
+}
+
+// when
+suggest(user = &#39;a&#39;, songName = &#39;Locked out of Heaven&#39;, artist = &quot;Bruno Mars&quot;)
+
+// then
+rocknroll.songList should be
+{
+  &#39;001&#39;:
+      &#39;songName&#39;: &#39;3005&#39;,
+      &#39;artist&#39;: &#39;Childish Gambino&#39;,
+      &#39;upVote&#39;: &#39;4&#39;,
+      &#39;downVote&#39;: &#39;1&#39;,
+      &#39;enable&#39;: &#39;enable&#39; ,
+      &#39;songURL&#39;: &#39;youtube.com/lkjiwj&#39;,
+      &#39;songImage&#39;: &#39;google.com/images/ji9ij2&#39;
+  &#39;002&#39;:
+      &#39;songName&#39;: &#39;Intro&#39;,
+      &#39;artist&#39;: &#39;XX&#39;,
+      &#39;upVote&#39;: &#39;3&#39;,
+      &#39;downVote&#39;: &#39;1&#39;,
+      &#39;enable&#39;: &#39;disable&#39; ,
+      &#39;songURL&#39;: &#39;youtube.com/lkbaabwj&#39;,
+      &#39;songImage&#39;: &#39;google.com/images/ji922fj2&#39;
+  &#39;003&#39;:
+      &#39;songName&#39;: &#39;Locked out of heaven&#39;,
+      &#39;artist&#39;: &#39;Bruno Mars&#39;,
+      &#39;upVote&#39;: &#39;0&#39;,
+      &#39;downVote&#39;: &#39;0&#39;,
+      &#39;enable&#39;: &#39;disable&#39; ,
+      &#39;songURL&#39;: &#39;youtube.com/lkbaabwj&#39;,
+      &#39;songImage&#39;: &#39;google.com/images/ji922fj2&#39;
+}
+</code></pre>
+<h3 id="case-user-a-suggests-already-existing-song-xx-">case: user ‘a’ suggests already existing song ‘XX’</h3>
+<pre><code class="javascript">// given
+rocknroll.songList is
+{
+  &#39;001&#39;:
+      &#39;songName&#39;: &#39;3005&#39;,
+      &#39;artist&#39;: &#39;Childish Gambino&#39;,
+      &#39;upVote&#39;: &#39;4&#39;,
+      &#39;downVote&#39;: &#39;1&#39;,
+      &#39;enable&#39;: &#39;enable&#39; ,
+      &#39;songURL&#39;: &#39;youtube.com/lkjiwj&#39;,
+      &#39;songImage&#39;: &#39;google.com/images/ji9ij2&#39;
+  &#39;002&#39;:
+      &#39;songName&#39;: &#39;Intro&#39;,
+      &#39;artist&#39;: &#39;XX&#39;,
+      &#39;upVote&#39;: &#39;3&#39;,
+      &#39;downVote&#39;: &#39;1&#39;,
+      &#39;enable&#39;: &#39;disable&#39; ,
+      &#39;songURL&#39;: &#39;youtube.com/lkbaabwj&#39;,
+      &#39;songImage&#39;: &#39;google.com/images/ji922fj2&#39;
+}
+
+// when
+suggest(user = &#39;a&#39;, songName = &#39;Intro&#39;, artist = &#39;XX&#39;)
+
+// then
+rocknroll.songList should be
+{
+  &#39;001&#39;:
+      &#39;songName&#39;: &#39;3005&#39;,
+      &#39;artist&#39;: &#39;Childish Gambino&#39;,
+      &#39;upVote&#39;: &#39;4&#39;,
+      &#39;downVote&#39;: &#39;1&#39;,
+      &#39;enable&#39;: &#39;enable&#39; ,
+      &#39;songURL&#39;: &#39;youtube.com/lkjiwj&#39;,
+      &#39;songImage&#39;: &#39;google.com/images/ji9ij2&#39;
+  &#39;002&#39;:
+      &#39;songName&#39;: &#39;Intro&#39;,
+      &#39;artist&#39;: &#39;XX&#39;,
+      &#39;upVote&#39;: &#39;3&#39;,
+      &#39;downVote&#39;: &#39;1&#39;,
+      &#39;enable&#39;: &#39;disable&#39; ,
+      &#39;songURL&#39;: &#39;youtube.com/lkbaabwj&#39;,
+      &#39;songImage&#39;: &#39;google.com/images/ji922fj2&#39;
+}
+</code></pre>
 <h2 id="action-post-a-comment-for-a-song">Action: Post a comment for a song</h2>
 <h3 id="case-user-a-posts-comment-c-for-song-d-">case: user ‘a’ posts comment ‘c’ for song ‘d’</h3>
 <pre><code class="javascript">// given

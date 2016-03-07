@@ -29,9 +29,9 @@ Our app uses the following structure for the database backend:
   		* songURL
   		* songImage
   * songDiscussion
-		* discussionID
-			* userName
-			* comment
+    * discussionID
+      * username
+      * comment
   * currentSong
     * songName
     * songURL
