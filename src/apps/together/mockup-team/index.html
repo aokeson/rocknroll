@@ -1,3 +1,320 @@
-TODO:
 
-<div>Links to the pages of your team's app's mockup</div>
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+	<style>
+
+	  html {
+		  background: url(images/background.jpg) no-repeat center center fixed;
+		  -webkit-background-size: cover;
+		  -moz-background-size: cover;
+		  -o-background-size: cover;
+		  background-size: cover;
+		}
+		body{
+		  background: transparent;
+		}
+
+	</style>
+    <body>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+        <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+
+		<nav>
+			<div class="nav-wrapper blue-grey darken-3">
+				<a id="name" href="#" class="brand-logo center">J U K E B O X</a>
+				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+				<ul id="navbar" class="right hide-on-med-and-down">
+					<li><a href="../index.html"><i class="material-icons">store</i></a></li>
+					<li class="active"><a href="playlist.html"><i class="material-icons">playlist_add</i></a></li>
+					<li><a href="admin.html"><i class="material-icons">settings</i></a></li>
+				</ul>
+				<ul class="side-nav" id="mobile-demo">
+					<li><a href="../index.html">Home</a></li>
+					<li class="active"><a href="playlist.html">Playlists</a></li>
+					<li><a href="admin.html">Admin</a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="card">
+
+					<div class="card-image waves-effect waves-block waves-light">
+						<img class="activator" src="images/piano.jpg" height="230px" width="350px">
+					</div>
+
+					<div class="card-content">
+						<span class="card-title activator grey-text text-darken-4">Add some jams!<i class="material-icons right">more_vert</i></span>
+
+					</div>
+
+					<div class="card-reveal">
+						<span class="card-title grey-text text-darken-4">Add some jams!<i class="material-icons right">close</i></span>
+						  <!--<form action="#">-->
+						  <div class="file-field input-field">
+							<div class="row">
+								<div id="message"></div>
+								<div class="input-field col s6">
+									<input placeholder="Song Name (Required)" id="songName" type="text" class="validate">
+								</div>
+								<div class="input-field col s6">
+									<input placeholder="Artist (Required)" id="artist" class="validate" type="text">
+								</div>
+							</div>
+							<div class="row">
+							<div class="file-path-wrapper input-field col s10">
+								<input placeholder="Album (Optional)" id="album" class="file-path validate" type="text">
+							</div>
+							<div class="btn input-field col s2">
+								<input type="file">
+								<span style="font-size:16px">File</span>
+							</div>
+							</div>
+							<div class="row">
+							  <div>
+								<a class="modal-action modal-close waves-effect waves-light btn" id="submit">
+								<span style="font-size:16px">Submit</span></a>
+
+
+							  </div>
+							</div>
+						</div>
+						<!--</form>-->
+					</div>
+				</div>
+        <div class="card">
+    <ul class="tabs">
+      <li class="tab col s3"><a href="#recent">New Beats</a></li>
+      <li class="tab col s3"><a class="active" href="#hot">Hot Tracks</a></li>
+    </ul>
+    <div id="recent" class="card-content">
+        <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header green lighten-4">
+            <b>Hotline Bling</b>
+            <a class="btn-flat btn-small waves-effect right waves-red "><i class="material-icons center">volume_off</i></a>
+            <a class="btn-flat btn-small waves-effect right waves-green "><i class="material-icons center">volume_up</i></a>
+          </div>
+          <div class="collapsible-body"><p>Artist: Drake<br>Album: Hotline Bling<br>Suggested by: Tyler Tafoya<br>Votes: -1</p></div>
+        </li>
+        <li>
+          <div class="collapsible-header red lighten-4">
+            <b>Far Alone</b>
+            <a class="btn-flat btn-small waves-effect right waves-red "><i class="material-icons center">volume_off</i></a>
+            <a class="btn-flat btn-small waves-effect right waves-green "><i class="material-icons center">volume_up</i></a>
+          </div>
+          <div class="collapsible-body"><p>Artist: G-Eazy<br>Album: These Things Happen<br>Suggested by: Paige Johnson<br>Votes: -3</p></div>
+        </li>
+        <li>
+        <div class="collapsible-header">
+            <b>Zealots of Stockholm</b>
+            <a class="btn-flat btn-small waves-effect right waves-red "><i class="material-icons center">volume_off</i></a>
+            <a class="btn-flat btn-small waves-effect right waves-green "><i class="material-icons center">volume_up</i></a>
+          </div>
+          <div class="collapsible-body"><p>Artist: Childish Gambino<br>Album: 3005<br>Suggested by: Willie Payne<br>Votes: 3</p></div>
+        </li>
+        <li>
+        <div class="collapsible-header red lighten-4">
+            <b>The Hills</b>
+            <a class="btn-flat btn-small waves-effect right waves-green "><i class="material-icons center">volume_up</i></a>
+            <a class="btn-flat btn-small waves-effect right waves-red "><i class="material-icons center">volume_off</i></a>
+          </div>
+          <div class="collapsible-body"><p>Artist: The Weeknd<br>Album: <br>Suggested by: Tyler Tafoya<br>Votes: 5</p></div>
+        </li>
+        </ul>
+    </div>
+    <div id="hot" class="card-content">
+        <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header green lighten-4">
+            <b>Stole the Show</b>
+            <a class="btn-flat btn-small waves-effect right waves-red "><i class="material-icons center">volume_off</i></a>
+            <a class="btn-flat btn-small waves-effect right waves-green "><i class="material-icons center">volume_up</i></a>
+          </div>
+          <div class="collapsible-body"><p>Artist: Kygo<br>Album: <br>Suggested by: Tyler Tafoya<br>Votes: 13</p></div>
+        </li>
+        <li>
+          <div class="collapsible-header red lighten-4">
+            <b>Pillow talk</b>
+            <a class="btn-flat btn-small waves-effect right waves-red "><i class="material-icons center">volume_off</i></a>
+            <a class="btn-flat btn-small waves-effect right waves-green "><i class="material-icons center">volume_up</i></a>
+          </div>
+          <div class="collapsible-body"><p>Artist: Zayn<br>Album: Pillow Talk<br>Suggested by: Paige Johnson<br>Votes: 8</p></div>
+        </li>
+        <li>
+        <div class="collapsible-header">
+            <b>Me, Myself, and I</b>
+            <a class="btn-flat btn-small waves-effect right waves-red "><i class="material-icons center">volume_off</i></a>
+            <a class="btn-flat btn-small waves-effect right waves-green "><i class="material-icons center">volume_up</i></a>
+          </div>
+          <div class="collapsible-body"><p>Artist: G-Eazy<br>Album: When It's Dark Out<br>Suggested by: Willie Payne<br>Votes: 5</p></div>
+        </li>
+        <li>
+        <div class="collapsible-header red lighten-4">
+            <b>The Hills</b>
+            <a class="btn-flat btn-small waves-effect right waves-green "><i class="material-icons center">volume_up</i></a>
+            <a class="btn-flat btn-small waves-effect right waves-red "><i class="material-icons center">volume_off</i></a>
+          </div>
+          <div class="collapsible-body"><p>Artist: The Weeknd<br>Album: <br>Suggested by: Tyler Tafoya<br>Votes: 5</p></div>
+        </li>
+        <li>
+        <div class="collapsible-header">
+            <b>Zealots of Stockholm</b>
+            <a class="btn-flat btn-small waves-effect right waves-red "><i class="material-icons center">volume_off</i></a>
+            <a class="btn-flat btn-small waves-effect right waves-green "><i class="material-icons center">volume_up</i></a>
+          </div>
+          <div class="collapsible-body"><p>Artist: Childish Gambino<br>Album: 3005<br>Suggested by: Willie Payne<br>Votes: 3</p></div>
+        </li>
+        <li>
+          <div class="collapsible-header green lighten-4">
+            <b>Hotline Bling</b>
+            <a class="btn-flat btn-small waves-effect right waves-red "><i class="material-icons center">volume_off</i></a>
+            <a class="btn-flat btn-small waves-effect right waves-green "><i class="material-icons center">volume_up</i></a>
+          </div>
+          <div class="collapsible-body"><p>Artist: Drake<br>Album: Hotline Bling<br>Suggested by: Tyler Tafoya<br>Votes: -1</p></div>
+        </li>
+        <li>
+          <div class="collapsible-header red lighten-4">
+            <b>Far Alone</b>
+            <a class="btn-flat btn-small waves-effect right waves-red "><i class="material-icons center">volume_off</i></a>
+            <a class="btn-flat btn-small waves-effect right waves-green "><i class="material-icons center">volume_up</i></a>
+          </div>
+          <div class="collapsible-body"><p>Artist: G-Eazy<br>Album: These Things Happen<br>Suggested by: Paige Johnson<br>Votes: -3</p></div>
+        </li>
+        </ul>
+    </div>
+  </div>
+</div>
+
+
+
+
+			<div class="col s12 m6">
+				<div class="card">
+
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="images/rhcp.jpg">
+          </div>
+
+          <div class="card-content">
+            <p>Artist: Red Hot Chili Peppers<br>
+            Song: Californication</p>
+            <span class="card-title activator grey-text text-darken-4">Now Playing<i class="material-icons right">more_vert</i></span>
+
+          </div>
+
+          <div class="card-reveal grey">
+            <span class="card-title grey-text text-darken-4">Now Playing: <i class="material-icons right">close</i></span>
+
+					<div class="card-content">
+            <p>Artist: Red Hot Chili Peppers<br>
+            Song: Californication</p>
+              <div id="tlkio" data-channel="JukeBox" data-theme="theme--night" style="width:100%;height:400px;"></div>
+              <script async src="http://tlk.io/embed.js" type="text/javascript"></script>
+
+
+
+
+            <div class="file-field input-field">
+            <div class="row">
+
+              <div id="message"></div>
+              <div class="input-field col s8">
+                <input placeholder="Type Message Here" id="chat" type="text" class="validate">
+              </div>
+                <div class="btn input-field blue-grey darken-4 col s2">
+                  <a class="modal-action modal-close waves-effect waves-light blue-grey darken-4 btn" id="submit">
+								<span>Submit</span></a>
+              </div>
+
+          </div>
+
+
+
+
+
+
+
+
+
+					</div>
+				</div>
+			</div>
+
+</div>
+
+</div>
+
+
+
+		</div>
+		<script>
+		  $(document).ready(function(){
+		  $(".button-collapse").sideNav();
+		});
+
+		$('#message').empty()
+		$('#submit').click(function(){
+			$('#message').empty()
+			var songName= $('#songName').val()
+			var artist=$('#artist').val()
+			var album = $('#album').val()
+
+			if(songName =="" || artist == "")
+			{
+				$('#message').append(' <span class="red-text text-darken-2">Song Name and Artist are required!</span>')
+
+			}
+			else
+			{
+				$('#message').append(' <span class="blue-text text-darken-2">Song added to Queue</span>')
+				$('#songName').val('')
+				$('#artist').val('')
+				$('#album').val('')
+
+			}
+
+
+
+		})
+		</script>
+
+	<footer class="page-footer blue-grey darken-4">
+		<div class="container">
+			<div class="row">
+				<div class="col l6 s12">
+					<h5 class="white-text">    </h5>
+					<h2 class="grey-text text-lighten-4">Rocknroll</h2>
+				</div>
+				<div class="col l4 offset-l2 s12">
+					<h5 class="white-text">Team Members</h5>
+					<ul>
+						<li><a class="grey-text text-lighten-3" href="https://github.com/Huriphoonado">Willie Payne</a></li>
+						<li><a class="grey-text text-lighten-3" href="https://github.com/Paigej">Paige Johnson</a></li>
+						<li><a class="grey-text text-lighten-3" href="https://github.com/aokeson">Alex Okeson</a></li>
+						<li><a class="grey-text text-lighten-3" href="https://github.com/TylerTafoya">Tyler Tafoya</a></li>
+						<li><a class="grey-text text-lighten-3" href="#">Hui-Min Lu</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright">
+			<div class="container">
+				© Copyright, Rocknroll 2016
+			</div>
+		</div>
+	</footer>
+
+    </body>
+  </html>
