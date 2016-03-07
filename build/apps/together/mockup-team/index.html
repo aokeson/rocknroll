@@ -66,15 +66,15 @@
 							<div class="row">
 								<div id="message"></div>
 								<div class="input-field col s6">
-									<input placeholder="Song Name (Require)" id="songName" type="text" class="validate">
+									<input placeholder="Song Name (Required)" id="songName" type="text" class="validate">
 								</div>
 								<div class="input-field col s6">
-									<input placeholder="Artist (Require)" id="artist" class="validate" type="text">
+									<input placeholder="Artist (Required)" id="artist" class="validate" type="text">
 								</div>
 							</div>
 							<div class="row">
 							<div class="file-path-wrapper input-field col s10">
-								<input placeholder="Album (Option)" id="album" class="file-path validate" type="text">
+								<input placeholder="Album (Optional)" id="album" class="file-path validate" type="text">
 							</div>
 							<div class="btn input-field col s2">
 								<input type="file">
@@ -152,7 +152,7 @@
 			}
 			else
 			{
-				$('#message').append(' <span class="blue-text text-darken-2">Add song success</span>')
+				$('#message').append(' <span class="blue-text text-darken-2">Song added to Queue</span>')
 				$('#songName').val('')
 				$('#artist').val('')
 				$('#album').val('')
