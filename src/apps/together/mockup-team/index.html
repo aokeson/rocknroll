@@ -94,24 +94,103 @@
 					</div>
 				</div>
 				<div class="card">
-					<div class="card-content">
-						<span class="card-title grey-text text-darken-4">Song Queue<i class="material-icons right">library_music</i></span>
+          <ul class="tabs">
+            <li class="tab col s3"><a href="#recent">New Beats</a></li>
+            <li class="tab col s3"><a class="active" href="#hot">Hot Tracks</a></li>
+          </ul>
+					<div id="recent" class="card-content">
 						  <ul class="collapsible" data-collapsible="accordion">
 							<li>
-							  <div class="collapsible-header"><b>Hotline Bling</b><i class="material-icons right">volume_off</i><i class="material-icons right">volume_up</i></div>
-							  <div class="collapsible-body"><p>Artist: Drake<br>Votes: +6</p></div>
+							  <div class="collapsible-header green lighten-4">
+                  <b>Hotline Bling</b>
+                  <a class="btn-flat btn-small waves-effect right waves-red "><i class="material-icons center">volume_off</i></a>
+                  <a class="btn-flat btn-small waves-effect right waves-green "><i class="material-icons center">volume_up</i></a>
+                </div>
+							  <div class="collapsible-body"><p>Artist: Drake<br>Album: Hotline Bling<br>Suggested by: Tyler Tafoya<br>Votes: -1</p></div>
 							</li>
 							<li>
-							  <div class="collapsible-header"><b>Far alone</b><i class="material-icons right">volume_off</i><i class="material-icons right">volume_up</i></div>
-							  <div class="collapsible-body"><p>Artist: G-Eazy<br>Votes: +3</p></div>
+                <div class="collapsible-header red lighten-4">
+                  <b>Far Alone</b>
+                  <a class="btn-flat btn-small waves-effect right waves-red "><i class="material-icons center">volume_off</i></a>
+                  <a class="btn-flat btn-small waves-effect right waves-green "><i class="material-icons center">volume_up</i></a>
+                </div>
+							  <div class="collapsible-body"><p>Artist: G-Eazy<br>Album: These Things Happen<br>Suggested by: Paige Johnson<br>Votes: -3</p></div>
 							</li>
 							<li>
-							  <div class="collapsible-header"><b>3005</b><i class="material-icons right">volume_off</i><i class="material-icons right">volume_up</i></div>
-							  <div class="collapsible-body"><p>Artist: Childish Gambino<br>Votes: +3</p></div>
+              <div class="collapsible-header">
+                  <b>Zealots of Stockholm</b>
+                  <a class="btn-flat btn-small waves-effect right waves-red "><i class="material-icons center">volume_off</i></a>
+                  <a class="btn-flat btn-small waves-effect right waves-green "><i class="material-icons center">volume_up</i></a>
+                </div>
+							  <div class="collapsible-body"><p>Artist: Childish Gambino<br>Album: 3005<br>Suggested by: Willie Payne<br>Votes: 3</p></div>
 							</li>
 							<li>
-							  <div class="collapsible-header"><b>The Hills</b><i class="material-icons right">volume_off</i><i class="material-icons right">volume_up</i></div>
-							  <div class="collapsible-body"><p>Artist: The Weeknd<br>Votes: +2</p></div>
+              <div class="collapsible-header red lighten-4">
+                  <b>The Hills</b>
+                  <a class="btn-flat btn-small waves-effect right waves-green "><i class="material-icons center">volume_up</i></a>
+                  <a class="btn-flat btn-small waves-effect right waves-red "><i class="material-icons center">volume_off</i></a>
+                </div>
+							  <div class="collapsible-body"><p>Artist: The Weeknd<br>Album: <br>Suggested by: Tyler Tafoya<br>Votes: 5</p></div>
+							</li>
+						  </ul>
+					</div>
+          <div id="hot" class="card-content">
+						  <ul class="collapsible" data-collapsible="accordion">
+							<li>
+							  <div class="collapsible-header green lighten-4">
+                  <b>Stole the Show</b>
+                  <a class="btn-flat btn-small waves-effect right waves-red "><i class="material-icons center">volume_off</i></a>
+                  <a class="btn-flat btn-small waves-effect right waves-green "><i class="material-icons center">volume_up</i></a>
+                </div>
+							  <div class="collapsible-body"><p>Artist: Kygo<br>Album: <br>Suggested by: Tyler Tafoya<br>Votes: 13</p></div>
+							</li>
+							<li>
+                <div class="collapsible-header red lighten-4">
+                  <b>Pillow talk</b>
+                  <a class="btn-flat btn-small waves-effect right waves-red "><i class="material-icons center">volume_off</i></a>
+                  <a class="btn-flat btn-small waves-effect right waves-green "><i class="material-icons center">volume_up</i></a>
+                </div>
+							  <div class="collapsible-body"><p>Artist: Zayn<br>Album: Pillow Talk<br>Suggested by: Paige Johnson<br>Votes: 8</p></div>
+							</li>
+							<li>
+              <div class="collapsible-header">
+                  <b>Me, Myself, and I</b>
+                  <a class="btn-flat btn-small waves-effect right waves-red "><i class="material-icons center">volume_off</i></a>
+                  <a class="btn-flat btn-small waves-effect right waves-green "><i class="material-icons center">volume_up</i></a>
+                </div>
+							  <div class="collapsible-body"><p>Artist: G-Eazy<br>Album: When It's Dark Out<br>Suggested by: Willie Payne<br>Votes: 5</p></div>
+							</li>
+							<li>
+              <div class="collapsible-header red lighten-4">
+                  <b>The Hills</b>
+                  <a class="btn-flat btn-small waves-effect right waves-green "><i class="material-icons center">volume_up</i></a>
+                  <a class="btn-flat btn-small waves-effect right waves-red "><i class="material-icons center">volume_off</i></a>
+                </div>
+							  <div class="collapsible-body"><p>Artist: The Weeknd<br>Album: <br>Suggested by: Tyler Tafoya<br>Votes: 5</p></div>
+							</li>
+              <li>
+              <div class="collapsible-header">
+                  <b>Zealots of Stockholm</b>
+                  <a class="btn-flat btn-small waves-effect right waves-red "><i class="material-icons center">volume_off</i></a>
+                  <a class="btn-flat btn-small waves-effect right waves-green "><i class="material-icons center">volume_up</i></a>
+                </div>
+							  <div class="collapsible-body"><p>Artist: Childish Gambino<br>Album: 3005<br>Suggested by: Willie Payne<br>Votes: 3</p></div>
+							</li>
+              <li>
+							  <div class="collapsible-header green lighten-4">
+                  <b>Hotline Bling</b>
+                  <a class="btn-flat btn-small waves-effect right waves-red "><i class="material-icons center">volume_off</i></a>
+                  <a class="btn-flat btn-small waves-effect right waves-green "><i class="material-icons center">volume_up</i></a>
+                </div>
+							  <div class="collapsible-body"><p>Artist: Drake<br>Album: Hotline Bling<br>Suggested by: Tyler Tafoya<br>Votes: -1</p></div>
+							</li>
+							<li>
+                <div class="collapsible-header red lighten-4">
+                  <b>Far Alone</b>
+                  <a class="btn-flat btn-small waves-effect right waves-red "><i class="material-icons center">volume_off</i></a>
+                  <a class="btn-flat btn-small waves-effect right waves-green "><i class="material-icons center">volume_up</i></a>
+                </div>
+							  <div class="collapsible-body"><p>Artist: G-Eazy<br>Album: These Things Happen<br>Suggested by: Paige Johnson<br>Votes: -3</p></div>
 							</li>
 						  </ul>
 					</div>
