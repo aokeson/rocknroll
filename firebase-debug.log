@@ -14,3 +14,11 @@
 [debug] ----------------------------------------------------------------------
 [debug] 
 [info] Listening at http://localhost:5000
+[debug] ----------------------------------------------------------------------
+[debug] Command:      C:\Program Files\nodejs\node.exe C:\Users\Betty\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] Platform:     win32
+[debug] Node Version: v5.4.0
+[debug] Time:         Sun Mar 06 2016 17:20:16 GMT-0700 (Mountain Standard Time)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[info] Listening at http://localhost:5000
