@@ -28,7 +28,7 @@
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
         <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
-		
+	  
 		<nav>
 			<div class="nav-wrapper blue-grey darken-3">
 				<a id="name" href="#" class="brand-logo center">J U K E B O X</a>
@@ -61,9 +61,10 @@
 				
 					<div class="card-reveal">
 						<span class="card-title grey-text text-darken-4">Add some jams!<i class="material-icons right">close</i></span>
-						  <form action="#">
+						  <!--<form action="#">-->
 						  <div class="file-field input-field">
 							<div class="row">
+								<div id="message"></div>
 								<div class="input-field col s6">
 									<input placeholder="Song Name (Require)" id="songName" type="text" class="validate">
 								</div>
@@ -73,7 +74,7 @@
 							</div>
 							<div class="row">
 							<div class="file-path-wrapper input-field col s10">
-								<input placeholder="Album (Option)" id="Album" class="file-path validate" type="text">
+								<input placeholder="Album (Option)" id="album" class="file-path validate" type="text">
 							</div>
 							<div class="btn input-field col s2">
 								<input type="file">
@@ -84,10 +85,12 @@
 							  <div>
 								<a class="modal-action modal-close waves-effect waves-light btn" id="submit">
 								<span style="font-size:16px">Submit</span></a>
+								
+								
 							  </div>
 							</div>
 						</div>
-						</form>
+						<!--</form>-->
 					</div>
 				</div>
 				<div class="card">
@@ -134,6 +137,26 @@
 		  $(document).ready(function(){
 		  $(".button-collapse").sideNav();
 		});
+		
+		$('#message').empty()
+		$('#submit').click(function(){
+			$('#message').empty()
+			var songName= $('#songName').val()
+			var artist=$('#artist').val()
+			var album = $('#album').val()
+			
+			if(songName =="" || artist == "")
+			{
+				$('#message').append(' <span class="red-text text-darken-2">Song Name and Artist are required!</span>')
+
+			}
+			else
+			{
+				$('#message').append(' <span class="blue-text text-darken-2">Add song success</span>')
+			}
+			 
+			
+		})
 		</script>
 	
 	<footer class="page-footer blue-grey darken-4">
