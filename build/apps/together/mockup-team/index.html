@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
   <html>
-    <head> 
+    <head>
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
@@ -13,7 +13,7 @@
 	<style>
 
 	  html {
-		  background: url(background.jpg) no-repeat center center fixed;
+		  background: url(images/background.jpg) no-repeat center center fixed;
 		  -webkit-background-size: cover;
 		  -moz-background-size: cover;
 		  -o-background-size: cover;
@@ -28,7 +28,7 @@
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
         <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
-	  
+
 		<nav>
 			<div class="nav-wrapper blue-grey darken-3">
 				<a id="name" href="#" class="brand-logo center">J U K E B O X</a>
@@ -49,16 +49,16 @@
 		<div class="row">
 			<div class="col s12 m6">
 				<div class="card">
-			  
+
 					<div class="card-image waves-effect waves-block waves-light">
-						<img class="activator" src="02.jpg" height="230px" width="350px">
+						<img class="activator" src="images/piano.jpg" height="230px" width="350px">
 					</div>
-			  
+
 					<div class="card-content">
 						<span class="card-title activator grey-text text-darken-4">Add some jams!<i class="material-icons right">more_vert</i></span>
-					 
+
 					</div>
-				
+
 					<div class="card-reveal">
 						<span class="card-title grey-text text-darken-4">Add some jams!<i class="material-icons right">close</i></span>
 						  <!--<form action="#">-->
@@ -85,8 +85,8 @@
 							  <div>
 								<a class="modal-action modal-close waves-effect waves-light btn" id="submit">
 								<span style="font-size:16px">Submit</span></a>
-								
-								
+
+
 							  </div>
 							</div>
 						</div>
@@ -120,7 +120,7 @@
 			<div class="col s12 m6">
 				<div class="card">
 					<div class="card-image">
-						<img src="../images/rhcp.jpg">
+						<img src="images/rhcp.jpg">
 						<span class="card-title">Now Playing</span>
 					</div>
 					<div class="card-content">
@@ -137,14 +137,14 @@
 		  $(document).ready(function(){
 		  $(".button-collapse").sideNav();
 		});
-		
+
 		$('#message').empty()
 		$('#submit').click(function(){
 			$('#message').empty()
 			var songName= $('#songName').val()
 			var artist=$('#artist').val()
 			var album = $('#album').val()
-			
+
 			if(songName =="" || artist == "")
 			{
 				$('#message').append(' <span class="red-text text-darken-2">Song Name and Artist are required!</span>')
@@ -158,12 +158,12 @@
 				$('#album').val('')
 
 			}
-			 	
 
-			
+
+
 		})
 		</script>
-	
+
 	<footer class="page-footer blue-grey darken-4">
 		<div class="container">
 			<div class="row">
@@ -176,8 +176,8 @@
 					<ul>
 						<li><a class="grey-text text-lighten-3" href="https://github.com/Huriphoonado">Willie Payne</a></li>
 						<li><a class="grey-text text-lighten-3" href="https://github.com/Paigej">Paige Johnson</a></li>
-						<li><a class="grey-text text-lighten-3" href="#">Alex Okeson</a></li>
-						<li><a class="grey-text text-lighten-3" href="#">Tyler Tafoya</a></li>
+						<li><a class="grey-text text-lighten-3" href="https://github.com/aokeson">Alex Okeson</a></li>
+						<li><a class="grey-text text-lighten-3" href="https://github.com/TylerTafoya">Tyler Tafoya</a></li>
 						<li><a class="grey-text text-lighten-3" href="#">Hui-Min Lu</a></li>
 					</ul>
 				</div>
@@ -189,6 +189,6 @@
 			</div>
 		</div>
 	</footer>
-	
+
     </body>
   </html>
