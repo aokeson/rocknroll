@@ -2,7 +2,7 @@
 var data = {
   songList: [],
   songDiscussion: [],
-  currentSong: null,
+  currentSong: [],
   user: null
 }
 
@@ -41,8 +41,8 @@ songDiscussionRef.on('value', function(snapshot){
     render()
 })
 
-songListRef.on('value', function(snapshot){
-    data.currentSong = snapshot.val()
+currentSongRef.on('value', function(snapshot){
+    data.currentSong = _.values(snapshot.val())
     render()
 })
 

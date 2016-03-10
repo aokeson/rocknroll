@@ -1,3 +1,29 @@
-// TODO
-// Displays the current song and album art (via link to image online)
-// Behind the current song is the message forum
+
+class CurrentSong extends React.Component {
+  render(){
+  	
+  	var currentSong = this.props.currentSong.map(function(s,i){
+      // TODO - Figure out how to order these by upvotes minus downvotes
+      return (
+		<li>
+			<div>Song Name:{ s.songName }</div>
+			<div>Artist:{ s.artist }</div>
+		</li>		
+	  )
+    })
+
+    return (
+      <div>
+        <div className="card">
+          <div className="card-content">
+            <ul >
+              {currentSong}
+            </ul>
+          </div>
+        </div>      
+      </div>
+    )
+  }
+
+}
+MyComponents.CurrentSong = CurrentSong
