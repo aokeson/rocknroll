@@ -72,7 +72,7 @@ actions.login = function(){
         status: 'online',
       }
 
-      var userRef = ref.child('customers').child(user.username)
+      var userRef = ref.child('admin').child(user.username)
 
       // subscribe to the user data
       userRef.on('value', function(snapshot){

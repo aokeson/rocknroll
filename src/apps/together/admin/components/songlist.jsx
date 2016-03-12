@@ -34,7 +34,7 @@ MyComponents.Song = React.createClass({
 
    return (
    	<li>
-   		<div className="collapsible-header">{ songName }</div>
+   		<div className="collapsible-header">{ songName }<a href="#"><i className="small material-icons">delete</i></a><a href="#"><i className="small material-icons">playlist_add</i></a></div>
    		<div className="collapsible-body"><p>Artist: { artist }<br/>Album: { album }<br/>Votes: { voteCount }</p></div>
     </li>
    );
@@ -52,6 +52,13 @@ class SongList extends React.Component {
       <div>
         <div className="card">
           <div className="card-content">
+		  <div className="row">
+			<div className="col s1"><i className="small material-icons">queue_music</i></div>
+			<div className="col s6"><h6>Current Song</h6></div>
+			<div className="progress ">
+				<div className="determinate"></div>
+			</div>
+		  </div>			
             <ul className="collapsible" data-collapsible="expandable">
               { songList }
             </ul>

@@ -8,7 +8,7 @@ class User extends React.Component {
 	      // user is not set
 	      	return(
 	      		<div className="container center">
-	      			<h2>You are not logged in yet.</h2>
+	      			<h4>You are not logged in yet.</h4>
 	      			<div className="row">
 	            		<a className="waves-effect waves-light btn-large grey darken-3" onClick={this.props.actions.login}>LOGIN VIA GITHUB</a>
 	        		</div>

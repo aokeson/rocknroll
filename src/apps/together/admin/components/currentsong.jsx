@@ -14,8 +14,16 @@ class CurrentSong extends React.Component {
 
     return (
       <div>
-        <div className="card">
+        <div className="card"> 
           <div className="card-content">
+		  <div className="row">
+			<div className="col s1"><i className="small material-icons">play_circle_outline</i></div>
+			<div className="col s6"><h6>Current Song</h6></div>
+			<div className="progress ">
+				<div className="determinate"></div>
+			</div>
+		  </div>
+		  
             <ul >
               {currentSong}
             </ul>
