@@ -23,11 +23,14 @@ class App extends React.Component {
                 user={this.props.data.user}
                 songList={this.props.data.songList}/>
             </div>
-			<div className="col s12 m6">
-				<MyComponents.CurrentSong
+            <div className="col s12 m6">
+              <MyComponents.CurrentSong
                 user={this.props.data.user}
                 currentSong={this.props.data.currentSong}/>
-			</div>
+              <MyComponents.Comments
+                user={this.props.data.user}
+                Comments={this.props.data.songDiscussion}/>
+            </div>
           </div>  
         </div>
       </div>

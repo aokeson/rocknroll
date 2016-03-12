@@ -72,7 +72,7 @@ actions.login = function(){
         status: 'online',
       }
 
-      var userRef = ref.child('admins').child(user.username)
+      var userRef = ref.child('customers').child(user.username)
 
       // subscribe to the user data
       userRef.on('value', function(snapshot){
@@ -89,7 +89,7 @@ actions.logout = function(){
   if (data.user){
     actions.logged = false
     ref.unauth()
-    var userRef = ref.child('admins').child(data.user.username)
+    var userRef = ref.child('customers').child(data.user.username)
 
     // unsubscribe to the user data
     userRef.off()
