@@ -54,7 +54,22 @@ MyComponents.Song = React.createClass({
 class SongList extends React.Component {
   render(){
     var u = this.props.user
-  	var songList = this.props.songList.map(function(s,i){
+    var voteList = this.props.songList.map(function(s,i){
+      var upVotes = 0
+      var downVotes = 0
+      if (typeof s['upVote'] != "undefined") {
+        var upVotesList = s['upVote']
+        var upVotes = Object.keys(upVotesList).length
+      }
+      if (typeof s['downVote'] != "undefined") {
+        var downVotesList = s['downVote']
+        var downVotes = Object.keys(downVotesList).length
+      }
+      return upVotes-downVotes
+    })
+    console.log(voteList)
+  	
+    var songList = this.props.songList.map(function(s,i){
       // TODO - Figure out how to order these by upvotes minus downvotes
       return <MyComponents.Song song={s} key={i} user={u}/>
     })
