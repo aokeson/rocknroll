@@ -3,7 +3,12 @@ MyComponents.Comment = React.createClass({
     return (
       <div className="card">
         <div className="card-content">
-          <div>{ this.props.discuss.userName }: { this.props.discuss.comment }</div>
+          <div className="chip">
+            <img src={this.props.discuss.imageURL}/>
+            {this.props.discuss.userName}
+          </div>
+          <br/>
+          {this.props.discuss.comment}
         </div>
       </div>
     );
@@ -12,8 +17,9 @@ MyComponents.Comment = React.createClass({
 
 class Comments extends React.Component {
   render(){
+    var u = this.props.user
     var comments = this.props.Comments.map(function(c,i){
-      return <MyComponents.Comment discuss={c} key={i}/>
+      return <MyComponents.Comment discuss={c} key={i} user={u}/>
     })
 
     if (this.props.user) {
@@ -28,7 +34,11 @@ class Comments extends React.Component {
                   <div className="determinate"></div>
                 </div>
               </div>
-              { comments }
+              <div id="scrollable">
+                { comments }
+              </div>
+            </div>
+            <div className="card-content">
               <ul>
                 <div className="row">
                   <div className="input-field col m12 s12">
@@ -57,7 +67,9 @@ class Comments extends React.Component {
                   <div className="determinate"></div>
                 </div>
               </div>
-              { comments }
+              <div id="scrollable">
+                { comments }
+              </div>
             </div>
           </div>      
         </div>
