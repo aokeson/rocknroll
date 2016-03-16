@@ -85,6 +85,15 @@ class SongList extends React.Component {
       return <MyComponents.Song song={s[1]} songKey={s[0]} key={i} user={u} actions={a}/>
     })
 
+    // zip the voteList with the songList, then sort by the votes, finally separate the lists
+    var combinedList = _.zip(voteList, songList)
+    var sortedCombinedList = _.reverse(_.sortBy(combinedList, '0'))
+    var uncombinedList = _.unzip(sortedCombinedList)
+    var sortedListByVote = uncombinedList[1]
+
+    // Use this list as the time sorted list if tabs are implemented
+    var sortedListByTime = _.reverse(songList)
+
     return (
       <div>
         <div className="card">
@@ -97,7 +106,7 @@ class SongList extends React.Component {
       </div>
       </div>      
             <ul className="collapsible" data-collapsible="expandable">
-              { songList }
+              { sortedListByVote }
             </ul>
           </div>
         </div>      
