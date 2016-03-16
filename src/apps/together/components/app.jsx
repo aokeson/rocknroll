@@ -18,8 +18,10 @@ class App extends React.Component {
           <div className="row">
             <div className="col s12 m6">
               <MyComponents.SongForm
+                actions={this.props.actions}
                 user={this.props.data.user}/>
               <MyComponents.SongList
+                actions={this.props.actions}
                 user={this.props.data.user}
                 songList={this.props.data.songList}/>
             </div>
@@ -36,6 +38,8 @@ class App extends React.Component {
       </div>
     );
   }
+  
+  
 }
 
 MyComponents.App = App

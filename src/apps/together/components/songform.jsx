@@ -26,7 +26,7 @@ class SongForm extends React.Component {
                   </div>
                 </div>
                 <div className="card-action">
-                  <a className="waves-effect waves-light btn blue-grey">Submit</a>
+                  <a className="waves-effect waves-light btn blue-grey" onClick={this.props.actions.submitSong}>Submit</a>
                 </div>
               </ul>
             </div>

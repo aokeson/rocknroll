@@ -82,7 +82,8 @@ function enter(person){
   var personRef = usersRef.child(person.name);
 
   personRef.set({
-    name: person.name
+    name: person.name,
+    imageURL: "https://avatars.githubusercontent.com/u/14320227?v=3"
   });
 
   // Have the customer act for the duration he/she is around
@@ -160,11 +161,12 @@ function addSong(){
 function addComment(userName){
   var commentRef = ref.child("songDiscussion")
 
-  var userName = random_name()
+  var url = "https://avatars.githubusercontent.com/u/14320227?v=3"
   var comment = userName + "'s Comment";
   // we can also chain the two calls together
   commentRef.push().set({
     userName: userName,
+    imageURL: "https://avatars.githubusercontent.com/u/14320227?v=3",
     comment: comment
   });
 }
