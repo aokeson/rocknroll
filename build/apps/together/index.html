@@ -37,7 +37,9 @@
 
     #scrollable {
       height: 500px;
-      overflow: scroll;
+      overflow-y: scroll;
+      position: relative;
+      bottom: 0;
     }
   </style>
 
@@ -70,6 +72,10 @@
 
   <script>
     MyComponents = {} // Global object where each property is a reference to a component class
+  </script>
+
+  <script>
+    $("#scrollable").scrollTop($('#scrollable').height())
   </script>
     
   <script type="text/babel" src="components/navbar.jsx"></script>
