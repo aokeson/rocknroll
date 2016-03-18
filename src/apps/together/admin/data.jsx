@@ -31,7 +31,7 @@ var songDiscussionRef = ref.child('songDiscussion')
 var currentSongRef = ref.child('currentSong')
 
 songListRef.on('value', function(snapshot){
-    data.songList = _.values(snapshot.val())
+    data.songList = _.toPairs(snapshot.val())
     render()
 })
 
@@ -49,6 +49,86 @@ currentSongRef.on('value', function(snapshot){
 //
 // ACTIONS
 //
+
+// Submits information from the submit song form
+// Currently uses jQuery to grab the elements from the form
+// Will not submit if artist or songName is empty, tags submission with user's displayName
+actions.submitSong = function(){
+  var songName = $("#songName").val()
+  var artist = $("#artist").val()
+  var album = $("#album").val()
+  var displayName = data.user.displayName
+
+  var flag = true
+
+  if (songName.length == 0){
+    flag = false
+  }
+  if (artist.length == 0){
+    flag = false
+  }
+
+  if (flag) {
+    songListRef.push().set({
+      songName: songName,
+      artist: artist,
+      album: album,
+      displayName: displayName
+    });
+    $("#songName").val("");
+    $("#artist").val("");
+    $("#album").val("");
+  }
+  
+}
+
+actions.deleteSong = function(){
+  var songName = $("#songName").val()
+  var songID = $("#songID").val()
+
+  var delSongRef = songListRef.child(songID)
+  delSongRef.remove()  
+
+
+}
+
+actions.addSong = function(){
+  var songName = $("#s_name").val()
+  var artist = $("#s_artist").val()
+
+
+    currentSongRef.push().set({
+      songName: songName,
+      artist: artist,
+    });
+
+
+}
+actions.upVote = function(songKey){
+  console.log(songKey)
+  var specificSongRef = songListRef.child(songKey)
+  var userName = data.user.username
+  console.log(userName)
+  var upVoteRef = specificSongRef.child("upVote").child(userName)
+  var downVoteRef = specificSongRef.child("downVote").child(userName)
+  downVoteRef.remove()
+  upVoteRef.set({
+    userName: userName
+  })
+  console.log(songKey)
+}
+
+actions.downVote = function(songKey){
+  var specificSongRef = songListRef.child(songKey)
+  var userName = data.user.username
+  var upVoteRef = specificSongRef.child("upVote").child(userName)
+  var downVoteRef = specificSongRef.child("downVote").child(userName)
+  upVoteRef.remove()
+  downVoteRef.set({
+    userName: userName
+  })
+  console.log(songKey)
+}
 
 actions.login = function(){
   ref.authWithOAuthPopup("github", function(error, authData){
@@ -69,10 +149,10 @@ actions.login = function(){
         username: authData.github.username,
         id: authData.github.id,
         imageURL: authData.github.profileImageURL,
-        status: 'online',
+        status: 'online'
       }
 
-      var userRef = ref.child('admins').child(user.username)
+      var userRef = ref.child('admin').child(user.username)
 
       // subscribe to the user data
       userRef.on('value', function(snapshot){
@@ -89,7 +169,7 @@ actions.logout = function(){
   if (data.user){
     actions.logged = false
     ref.unauth()
-    var userRef = ref.child('admins').child(data.user.username)
+    var userRef = ref.child('admin').child(data.user.username)
 
     // unsubscribe to the user data
     userRef.off()
