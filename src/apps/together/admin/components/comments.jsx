@@ -46,7 +46,7 @@ class Comments extends React.Component {
                     <label for="comment">Comment</label>
                   </div>
                   <div className="card-action">
-                    <a className="waves-effect waves-light btn blue-grey">Submit</a>
+                    <a className="waves-effect waves-light btn blue-grey" onClick={this.props.actions.submitComment}>Submit</a>
                   </div>
                 </div>
               </ul>

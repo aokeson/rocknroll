@@ -30,6 +30,7 @@ class App extends React.Component {
                 user={this.props.data.user}
                 currentSong={this.props.data.currentSong}/>
               <MyComponents.Comments
+                actions={this.props.actions}
                 user={this.props.data.user}
                 Comments={this.props.data.songDiscussion}/>
             </div>

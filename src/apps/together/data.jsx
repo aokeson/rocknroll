@@ -53,6 +53,28 @@ currentSongRef.on('value', function(snapshot){
 // Submits information from the submit song form
 // Currently uses jQuery to grab the elements from the form
 // Will not submit if artist or songName is empty, tags submission with user's displayName
+actions.submitComment = function(){
+  var comment = $("#comment").val()
+  var displayName = data.user.username
+  var image = data.user.imageURL
+
+  var flag = true
+
+  if (comment.length == 0){
+    flag = false
+  }
+
+  if (flag) {
+    songDiscussionRef.push().set({
+      comment: comment,
+      imageURL: image,
+      userName: displayName
+    });
+    $("#comment").val("");
+  }
+  
+}
+
 actions.submitSong = function(){
   var songName = $("#songName").val()
   var artist = $("#artist").val()
