@@ -7,6 +7,12 @@ MyComponents.Song = React.createClass({
   handleDownVote: function(event) {
     this.props.actions.downVote(this.props.songKey)
   },
+  handleDeleteSong: function(event) {
+    this.props.actions.deleteSong(this.props.songKey)
+  },
+  handleAddSong: function(event) {
+    this.props.actions.addSong(this.props.songKey)
+  },
 
   render: function() {
    var songName = this.props.song['songName']
@@ -44,11 +50,10 @@ MyComponents.Song = React.createClass({
    if (this.props.user) {
      return (
      	<li>
-		    <input type="hidden" value={this.props.songKey} id="songID"/>
-			<input type="hidden" value={songName} id="s_name"/>
-			<input type="hidden" value={artist} id="s_artist"/>
-     		<div className="collapsible-header">{ songName }<a  onClick={this.props.actions.deleteSong}><i className="small material-icons">delete</i></a><a onClick={this.props.actions.addSong}><i className="small material-icons">playlist_add</i></a></div>
-     		<div className="collapsible-body"><p>Artist: { artist }<br/>Album: { album }<br/>Votes: { voteCount }<br/><a href="#"><i className="small material-icons" onClick={this.handleUpVote}>thumb_up</i></a>  <a href="#"><i className="small material-icons" onClick={this.handleDownVote}>thumb_down</i></a></p></div>
+        <input type="hidden" value={songName} id="s_name"/>
+        <input type="hidden" value={artist} id="s_artist"/>
+        <div className="collapsible-header"><a className="btn-small waves-effect waves-light"><i className="small material-icons" onClick={this.handleDeleteSong}>delete</i></a>  <a className="btn-small waves-effect waves-light"><i className="small material-icons" onClick={this.handleAddSong}>playlist_add</i></a>{ songName }</div>
+     		<div className="collapsible-body"><p>Artist: { artist }<br/>Album: { album }<br/>Votes: { voteCount }<br/><a className="btn-small waves-effect waves-light"><i className="small material-icons" onClick={this.handleUpVote}>thumb_up</i></a>  <a className="btn-small waves-effect waves-light"><i className="small material-icons" onClick={this.handleDownVote}>thumb_down</i></a></p></div>
       </li>
      );
    }
@@ -107,12 +112,10 @@ class SongList extends React.Component {
       <div className="progress ">
         <div className="determinate"></div>
       </div>
-      </div>
-		<div id="scrollable">
+      </div>      
             <ul className="collapsible" data-collapsible="expandable">
               { sortedListByVote }
             </ul>
-		</div>
           </div>
         </div>      
       </div>

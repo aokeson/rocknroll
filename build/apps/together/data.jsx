@@ -57,7 +57,7 @@ actions.submitSong = function(){
   var songName = $("#songName").val()
   var artist = $("#artist").val()
   var album = $("#album").val()
-  var displayName = data.user.displayName
+  var displayName = data.user.username
 
   var flag = true
 

@@ -45,7 +45,7 @@ MyComponents.Song = React.createClass({
      return (
      	<li>
      		<div className="collapsible-header">{ songName }</div>
-     		<div className="collapsible-body"><p>Artist: { artist }<br/>Album: { album }<br/>Votes: { voteCount }<br/><a href="#"><i className="small material-icons" onClick={this.handleUpVote}>thumb_up</i></a>  <a href="#"><i className="small material-icons" onClick={this.handleDownVote}>thumb_down</i></a></p></div>
+     		<div className="collapsible-body"><p>Artist: { artist }<br/>Album: { album }<br/>Votes: { voteCount }<br/><a className="btn-small waves-effect waves-light"><i className="small material-icons" onClick={this.handleUpVote}>thumb_up</i></a>  <a className="btn-small waves-effect waves-light"><i className="small material-icons" onClick={this.handleDownVote}>thumb_down</i></a></p></div>
       </li>
      );
    }

@@ -57,7 +57,7 @@ actions.submitSong = function(){
   var songName = $("#songName").val()
   var artist = $("#artist").val()
   var album = $("#album").val()
-  var displayName = data.user.displayName
+  var displayName = data.user.username
 
   var flag = true
 
@@ -82,40 +82,37 @@ actions.submitSong = function(){
   
 }
 
-actions.deleteSong = function(){
-  var songName = $("#songName").val()
-  var songID = $("#songID").val()
-
-  var delSongRef = songListRef.child(songID)
-  delSongRef.remove()  
-
-
+actions.deleteSong = function(songKey){
+  var specificSongRef = songListRef.child(songKey)
+  specificSongRef.remove()
 }
 
-actions.addSong = function(){
-  var songName = $("#s_name").val()
-  var artist = $("#s_artist").val()
-
-
-    currentSongRef.push().set({
-      songName: songName,
-      artist: artist,
-    });
-
-
+actions.addSong = function(songKey){
+  currentSongRef.remove()
+  var specificSongRef = songListRef.child(songKey)
+  for (var i=0; i<data.songList.length; i++){
+    if (data.songList[i][0] == songKey){
+      var songName = data.songList[i][1].songName
+      var artist = data.songList[i][1].artist
+    }
+  }
+  console.log(songName)
+  currentSongRef.push().set({
+    songName: songName,
+    artist: artist
+  });
+  specificSongRef.remove()
 }
+
 actions.upVote = function(songKey){
-  console.log(songKey)
   var specificSongRef = songListRef.child(songKey)
   var userName = data.user.username
-  console.log(userName)
   var upVoteRef = specificSongRef.child("upVote").child(userName)
   var downVoteRef = specificSongRef.child("downVote").child(userName)
   downVoteRef.remove()
   upVoteRef.set({
     userName: userName
   })
-  console.log(songKey)
 }
 
 actions.downVote = function(songKey){
@@ -127,7 +124,6 @@ actions.downVote = function(songKey){
   downVoteRef.set({
     userName: userName
   })
-  console.log(songKey)
 }
 
 actions.login = function(){
@@ -152,7 +148,7 @@ actions.login = function(){
         status: 'online'
       }
 
-      var userRef = ref.child('admin').child(user.username)
+      var userRef = ref.child('admins').child(user.username)
 
       // subscribe to the user data
       userRef.on('value', function(snapshot){
@@ -169,7 +165,7 @@ actions.logout = function(){
   if (data.user){
     actions.logged = false
     ref.unauth()
-    var userRef = ref.child('admin').child(data.user.username)
+    var userRef = ref.child('admins').child(data.user.username)
 
     // unsubscribe to the user data
     userRef.off()
