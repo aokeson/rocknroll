@@ -2,7 +2,7 @@
 [debug] Command:      C:\Program Files\nodejs\node.exe C:\Users\Betty\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
 [debug] Platform:     win32
 [debug] Node Version: v5.4.0
-[debug] Time:         Thu Mar 17 2016 14:10:13 GMT-0600 (Mountain Daylight Time)
+[debug] Time:         Mon Mar 21 2016 09:42:08 GMT-0600 (Mountain Daylight Time)
 [debug] ----------------------------------------------------------------------
 [debug] 
 [info] Listening at http://localhost:5000

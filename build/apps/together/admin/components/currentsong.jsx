@@ -6,8 +6,8 @@ class CurrentSong extends React.Component {
       // TODO - Figure out how to order these by upvotes minus downvotes
       return (
 		    <li key={i}>
-          <div>Song Name: { s.songName }</div>
-          <div>Artist: { s.artist }</div>
+				<div>Song Name: { s.songName }</div>
+				<div>Artist: { s.artist }</div>
 		    </li>		
       )
     })
@@ -24,7 +24,7 @@ class CurrentSong extends React.Component {
               </div>
 		        </div>
             <ul>
-              { currentSong }
+			 { currentSong }
             </ul>
           </div>
         </div>      
