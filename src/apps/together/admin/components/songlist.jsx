@@ -106,14 +106,14 @@ class SongList extends React.Component {
       <div>
         <div className="card">
           <div className="card-content">
-      <div className="row">
-      <div className="col s1"><i className="small material-icons">queue_music</i></div>
-      <div className="col s6"><h6>Suggested Songs</h6></div>
-      <div className="progress ">
-        <div className="determinate"></div>
-      </div>
-      </div>      
-            <ul className="collapsible" data-collapsible="expandable">
+            <ul className="tabs">
+              <li className="tab col s6"><a href="#new">New Beats</a></li>
+              <li className="tab col s6"><a href="#top">Hot Tracks</a></li>
+            </ul>     
+            <ul className="collapsible" data-collapsible="expandable" id='new'>
+              { sortedListByTime }
+            </ul>
+            <ul className="collapsible" data-collapsible="expandable" id='top'>
               { sortedListByVote }
             </ul>
           </div>
@@ -126,6 +126,11 @@ class SongList extends React.Component {
       $('.collapsible').collapsible({
         accordion : false
       });
+    });
+  }
+  componentDidMount(){
+    $(document).ready(function(){
+      $('.tabs').tabs();
     });
   }
 }
